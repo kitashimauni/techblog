@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://tech.n-island.dev/'
 languageCode = 'ja-jp'
 title = '技術ブログ'
 theme = 'my-theme'
