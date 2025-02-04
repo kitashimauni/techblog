@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja-jp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ブログ制作記 #1 | 技術ブログ</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>技術ブログ</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>ブログ制作記 #1</h1>
+
+  
+  
+  <p>投稿日
+    <time datetime="2025-02-04T20:42:30&#43;09:00">2025/02/04</time>
+    
+  </p>
+
+  <p>せっかくブログを作ったので制作の記録を書こうと思います。</p>
+
+<details>
+  <summary>余談</summary>
+  <p>これはshortcodeを使って書かれています。(使ってみたかった)</p>
+<p>ところでブログでは「だ/である」調と「です/ます」調のどちらで書くのがいいのでしょうか？</p>
+<p>説明するときは「だ/である」調のほうが書きやすい気がしますが…</p>
+<p>しばらくは混ざった感じになってしまいそうです。</p>
+</details>
+<h1 id="本題">本題</h1>
+<p>このブログは以下のコマンドを打った状態から始めています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site techblog
+</span></span><span style="display:flex;"><span>hugo new theme my-theme
+</span></span></code></pre></div><p>Hugoの素のテンプレートから作り始めたため、最初は本当に何もないです。Hugoを触るのも初めてなので細かいところから変更を加えていきます。</p>
+<p>今回変更を加えるのは<code>themes/my-theme</code>の部分です。何度かパスが出てきますが、それらはmy-themeフォルダ内のパスとなっています。(<code>my-theme</code>は適当に付けた名前なので後で名前を変えるかもしれません)</p>
+<p>序盤に変更した内容を以下に記します。ときどき直したいものにコメントを入れてますが、後々見たときには直ってるといいな…。</p>
+<h2 id="日時表記を変える">日時表記を変える</h2>
+<p>デフォルトでは投稿日の表記が&quot;March 15, 2023&quot;のようになっていたので投稿日時をyyyy/mm/ddで表記するように変更しました。ついでに最終更新日時も表記しています。</p>
+<p><code>layouts/_default/single.html</code>を以下のように変更します。
+最終更新日時はフロントマターで<code>lastmod</code>に値を入れておくと<code>.Lastmod</code>で取得できます。</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></span><span style="background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ define &#34;main&#34; }}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">h1</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  {{ $dateMachine := .Date | time.Format &#34;2006-01-02T15:04:05-07:00&#34; }}
+</span></span><span style="display:flex; background-color:#3c3d38"><span>  {{ $dateHuman := .Date | time.Format &#34;2006/01/02&#34; }}
+</span></span><span style="display:flex; background-color:#3c3d38"><span>  &lt;<span style="color:#f92672">p</span>&gt;投稿日
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    &lt;<span style="color:#f92672">time</span> <span style="color:#a6e22e">datetime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ $dateMachine }}&#34;</span>&gt;{{ $dateHuman }}&lt;/<span style="color:#f92672">time</span>&gt;
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    {{ if ne .Lastmod .Date }}
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      {{ $updateDate := .Lastmod | time.Format &#34;2006/01/02&#34; }}
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      &lt;<span style="color:#f92672">br</span>&gt;
+</span></span><span style="display:flex; background-color:#3c3d38"><span>      (最終更新:&lt;<span style="color:#f92672">time</span> <span style="color:#a6e22e">datetime</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ $dateMachine }}&#34;</span>&gt;{{ $updateDate }}&lt;/<span style="color:#f92672">time</span>&gt;)
+</span></span><span style="display:flex; background-color:#3c3d38"><span>    {{ end }}
+</span></span><span style="display:flex; background-color:#3c3d38"><span>  &lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  {{ .Content }}
+</span></span><span style="display:flex;"><span>  {{ partial &#34;terms.html&#34; (dict &#34;taxonomy&#34; &#34;tags&#34; &#34;page&#34; .) }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>コピーしても行番号が入らないようになっているのはポイント高いです。コピーボタンとかファイル名表示とかも欲しいですね。</p>
+<h2 id="コードブロックの余白を増やす">コードブロックの余白を増やす</h2>
+<p>上の部分を書いていて、コードブロックの余白が小さすぎると感じたので余白を増やしました。コードブロックに<code>highlight</code>というクラスがついてたので<code>padding</code>して同じ色の背景を入れています。</p>
+<p>生成されたHTMLのコードブロックの部分を見るとTailwindが使われてるっぽいです。</p>
+<p><code>assets/css/main.css</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#272822</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="メニューにスタイルを付ける">メニューにスタイルを付ける</h2>
+<p>何もしないと適用されるCSSが全く無いのでこんな感じになってしまいます。
+<figure><img src="./20250204-2-1.png"
+    alt="何も設定しない場合のメニュー">
+</figure>
+
+<code>assets/css/main.css</code>に以下を追記して見た目が少し良くなりました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">ul</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">display</span>: <span style="color:#66d9ef">flex</span>; <span style="color:#75715e">/* 横並び */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">list-style</span>: <span style="color:#66d9ef">none</span>; <span style="color:#75715e">/* 箇条書きの点を消す */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span>; <span style="color:#75715e">/* ナビゲーション全体の上下の余白 */</span>  
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">li</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">margin</span>: <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>; <span style="color:#75715e">/* 各項目の間隔を調整 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">a</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">none</span>; <span style="color:#75715e">/* 下線を消す */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#66d9ef">large</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">15</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">transition</span>: <span style="color:#66d9ef">all</span> <span style="color:#ae81ff">0.3</span><span style="color:#66d9ef">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">nav</span> <span style="color:#f92672">a</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#eee</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ここは全体の見た目を変えるときに調整すると思います。</p>
+<h2 id="タグの一覧表示を改善する">タグの一覧表示を改善する</h2>
+<p><a href="http://localhost:1313/tags/">この</a>タグの一覧表示も、デフォルトだと変な感じなので変えました。</p>
+<p><code>layouts/taxonomy/terms.html</code>を新しく作成し、以下のように書きます。これによって、タグが記事の多い順に並び、記事数もタグの横に表示されるようになりました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ define &#34;main&#34; }}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;{{ .Title }}&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ .Content }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ range .Data.Terms.ByCount }}
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Page.RelPermalink }}&#34;</span>&gt;{{ .Page.LinkTitle }}({{ .Count }})&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ end }}
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div><p>いい感じになりました。必ず始めが大文字になるのはどうなのか…。CSSを付けてもう少し見た目も良くしたいですね。</p>
+<figure><img src="./20250204-2-2.png"
+    alt="改善後のTags">
+</figure>
+
+<p>ひとまずはこんな感じで終わります。本当に最低限ですが見た目は良くなったと思います。</p>
+<p>まだまだ改善の余地があるのでHugoを学びながら少しずつよくしていきたいです。(この下のタグ表記も上に持っていきたい)</p>
+  
+  <div>
+    <div>Tags:</div>
+    <ul>
+        <li><a href="/tags/hugo/">Hugo</a></li>
+    </ul>
+  </div>
+
+
+  </main>
+  <footer>
+    <p>Copyright 2025. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
