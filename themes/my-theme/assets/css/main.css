@@ -8,6 +8,7 @@ body {
 
 header {
   border-bottom: 1px solid #222;
+  padding-bottom: 0.3rem;
   margin-bottom: 1rem;
 }
 
@@ -19,4 +20,33 @@ footer {
 a {
   color: #00e;
   text-decoration: none;
+}
+
+nav ul {
+  display: flex; /* 横並び */
+  list-style: none; /* 箇条書きの点を消す */
+  padding: 8px 0;
+  margin: 0; /* ナビゲーション全体の上下の余白 */  
+}
+
+nav li {
+  margin: 0 5px; /* 各項目の間隔を調整 */
+}
+
+nav a {
+  text-decoration: none; /* 下線を消す */
+  font-size: large;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+nav a:hover {
+  background: #eee;
+}
+
+.highlight {
+  padding: 1px 10px;
+  background-color: #272822;
 }

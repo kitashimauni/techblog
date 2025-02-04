@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 技術ブログ</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on 技術ブログ</description>
+    <title>Hugo on 技術ブログ</title>
+    <link>http://localhost:1313/tags/hugo/</link>
+    <description>Recent content in Hugo on 技術ブログ</description>
     <generator>Hugo</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 04 Feb 2025 20:42:30 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ブログ制作記 #1</title>
       <link>http://localhost:1313/posts/20250204-2/</link>
       <pubDate>Tue, 04 Feb 2025 20:42:30 +0900</pubDate>
       <guid>http://localhost:1313/posts/20250204-2/</guid>
       <description>&lt;p&gt;せっかくブログを作ったので制作の記録を書こうと思います。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>初投稿</title>
-      <link>http://localhost:1313/posts/20250204-1/</link>
-      <pubDate>Tue, 04 Feb 2025 14:17:44 +0900</pubDate>
-      <guid>http://localhost:1313/posts/20250204-1/</guid>
-      <description>初投稿記事です</description>
     </item>
   </channel>
 </rss>
