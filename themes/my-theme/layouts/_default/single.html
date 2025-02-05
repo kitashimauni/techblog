@@ -10,8 +10,9 @@
       <br>
       (最終更新:<time datetime="{{ $dateMachine }}">{{ $updateDate }}</time>)
     {{ end }}
+    <br>
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
   </p>
 
   {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 {{ end }}

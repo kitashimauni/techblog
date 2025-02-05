@@ -49,4 +49,13 @@ nav a:hover {
 .highlight {
   padding: 1px 10px;
   background-color: #272822;
+
+  overflow-x: auto;
+  scrollbar-gutter: stable;
+}
+
+html, body {
+  margin: auto; /* 横の中央揃え */
+  justify-content: center; /* 水平方向の中央揃え */
+  padding: 1rem; /* 余白 */
 }
