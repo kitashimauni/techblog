@@ -1,0 +1,10 @@
+{{ if .Get "class" }}
+    {{ $class = .Get "class" }}
+    <div class="{{ $class }}">
+    {{ .Inner }}
+    </div>
+{{ else }}
+    <div style="display: flex; flex-wrap: wrap;">
+        {{ .Inner }}
+    </div>
+{{ end }}

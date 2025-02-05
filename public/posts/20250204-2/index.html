@@ -27,6 +27,9 @@
     <li>
       <a href="/tags/">Tags</a>
     </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
     </ul>
   </nav>
 
@@ -41,6 +44,19 @@
   <p>投稿日
     <time datetime="2025-02-04T20:42:30&#43;09:00">2025/02/04</time>
     
+      
+      <br>
+      (最終更新:<time datetime="2025-02-04T20:42:30&#43;09:00">2025/02/05</time>)
+    
+    <br>
+    
+  <span>
+    <span>Tags:
+        <a href="/tags/hugo/">Hugo</a>
+        
+    </span>
+  </span>
+
   </p>
 
   <p>せっかくブログを作ったので制作の記録を書こうと思います。</p>
@@ -106,7 +122,8 @@
 </div><p>コピーしても行番号が入らないようになっているのはポイント高いです。コピーボタンとかファイル名表示とかも欲しいですね。</p>
 <h2 id="コードブロックの余白を増やす">コードブロックの余白を増やす</h2>
 <p>上の部分を書いていて、コードブロックの余白が小さすぎると感じたので余白を増やしました。コードブロックに<code>highlight</code>というクラスがついてたので<code>padding</code>して同じ色の背景を入れています。</p>
-<p>生成されたHTMLのコードブロックの部分を見るとTailwindが使われてるっぽいです。</p>
+<p><del>生成されたHTMLのコードブロックの部分を見るとTailwindが使われてるっぽいです。</del></p>
+<p>タグに<code>style</code>が書かれているだけだった。</p>
 <p><code>assets/css/main.css</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
@@ -158,20 +175,13 @@
 </span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>{{ end }}
 </span></span></code></pre></div><p>いい感じになりました。必ず始めが大文字になるのはどうなのか…。CSSを付けてもう少し見た目も良くしたいですね。</p>
+<p>(ビルドしたら大文字じゃなくなった…謎)</p>
 <figure><img src="./20250204-2-2.png"
     alt="改善後のTags">
 </figure>
 
 <p>ひとまずはこんな感じで終わります。本当に最低限ですが見た目は良くなったと思います。</p>
 <p>まだまだ改善の余地があるのでHugoを学びながら少しずつよくしていきたいです。(この下のタグ表記も上に持っていきたい)</p>
-  
-  <div>
-    <div>Tags:</div>
-    <ul>
-        <li><a href="/tags/hugo/">Hugo</a></li>
-    </ul>
-  </div>
-
 
   </main>
   <footer>
