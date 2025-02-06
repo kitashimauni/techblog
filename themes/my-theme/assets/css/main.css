@@ -2,8 +2,9 @@ body {
   color: #222;
   font-family: sans-serif;
   line-height: 1.5;
-  margin: 1rem;
+  margin: auto; /* 横の中央揃え */
   max-width: 768px;
+  padding: 1rem; /* 余白 */
 }
 
 header {
@@ -15,6 +16,8 @@ header {
 footer {
   border-top: 1px solid #222;
   margin-top: 1rem;
+  position: sticky;
+  top: 100vh;
 }
 
 a {
@@ -46,16 +49,31 @@ nav a:hover {
   background: #eee;
 }
 
-.highlight {
-  padding: 1px 10px;
-  background-color: #272822;
-
-  overflow-x: auto;
-  scrollbar-gutter: stable;
+figure img {
+  max-width: 100%;  /* body の横幅以上に広がらない */
+  margin: 0 auto;   /* 中央寄せ */
 }
 
 html, body {
-  margin: auto; /* 横の中央揃え */
-  justify-content: center; /* 水平方向の中央揃え */
-  padding: 1rem; /* 余白 */
+  min-height: 100vh; /* 画面の高さいっぱいに表示 */
+  box-sizing: border-box; /* padding や border が要素のサイズに含まれる */
+}
+
+.highlight {
+  padding: 0 10px;
+  background-color: #272822;
+  display: flex;
+  overflow-x: auto; /* autoにすると必要な場合だけスクロールバーが出る */
+  scrollbar-gutter: stable;
+}
+
+.highlight::-webkit-scrollbar {
+  width: 100% /* これを付けないと右端までスクロールできない */;
+  height: 8px; /* スクロールバーの高さ（横スクロール用） */
+  background: #ccc; /* 背景色 */
+}
+
+.highlight::-webkit-scrollbar-thumb {
+  background: #666; /* スクロールバー本体の色 */
+  border-radius: 4px; /* 丸みをつける */
 }
