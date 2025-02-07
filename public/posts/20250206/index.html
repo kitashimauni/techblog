@@ -61,7 +61,7 @@
 <p>これによって、PCのChromeではスクロールできるときにスクロールバーが表示されるのでスクロールできることがわかるのですが、スマホのChromeで見るとスクロールバーは表示されないのでスクロールできることがわかりずらいです。</p>
 <p>なので、以下のCSSを<code>assets/css/main.css</code>に追記します(これ以降登場するCSSは全部ここに書き込んでいます)。これによって、WebKit系のブラウザではスクロール可能な時にコードブロックの下にスクロールバーが必ず表示されるようになります。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight</span>::<span style="color:#a6e22e">-webkit-scrollbar</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span> <span style="color:#75715e">/* これを付けないと右端までスクロールできない */</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">100</span><span style="color:#66d9ef">%</span>; <span style="color:#75715e">/* これを付けないと右端までスクロールできない */</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">height</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>; <span style="color:#75715e">/* スクロールバーの高さ（横スクロール用） */</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ccc</span>; <span style="color:#75715e">/* 背景色 */</span>
 </span></span><span style="display:flex;"><span>}

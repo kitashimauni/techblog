@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja-jp" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>ブログ制作記 #4 | 技術ブログ</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+
+      <script src="/js/main.js"></script>
+
+
+</head>
+<body>
+  <header>
+    <h1>技術ブログ</h1>
+
+  <nav>
+    <ul>
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a>
+    </li>
+    <li>
+      <a href="/tags/">Tags</a>
+    </li>
+    <li>
+      <a href="/about/">About</a>
+    </li>
+    </ul>
+  </nav>
+
+
+  </header>
+  <main>
+    
+  <h1>ブログ制作記 #4</h1>
+
+  
+  
+  <p>投稿日
+    <time datetime="2025-02-07T00:29:15&#43;09:00">2025/02/07</time>
+    
+    <br>
+    
+  <span>
+    <span>Tags:
+        <a href="/tags/hugo/">Hugo</a>, 
+        <a href="/tags/web/">Web</a>
+    </span>
+  </span>
+
+  </p>
+
+  <p>あまり大きな変更は加えていませんが、最低限の見た目にはなってきました。</p>
+<p>今回もやっていきます。</p>
+<h2 id="hugoのバージョンを上げる">Hugoのバージョンを上げる</h2>
+<p>これまでドキュメントにはあるって書いてあるのに使えないな…という機能があったのですが、どうやらバージョンを上げていなかったのが原因のようです(当たり前)。</p>
+<p>元々は0.128.2だったものを0.143.1に上げました。Wingetを使って以下のコマンドで簡単にアップデートできました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>winget install Hugo.Hugo.Extended
+</span></span></code></pre></div><p>どこか壊れないか不安でしたが、とりあえずは問題なさそうです。(そもそも本番環境は最新版のHugoでビルドされている気がする)</p>
+<h2 id="ページ全体のスクロールバーの改善">ページ全体のスクロールバーの改善</h2>
+<p>縦方向にページが収まりきらない場合、何もしなくてもスクロールバーが表示されますが、表示されるときとされないときでbodyの位置がずれてしまって微妙なので直します。</p>
+<p>とりあえずは以下を書くだけで解決できます。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">html</span> {
+</span></span><span style="display:flex;"><span>  scrollbar-gutter: stable; <span style="color:#75715e">/* スクロールバーを表示してもずれないようにする */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>ついでにコードブロックと同じ要領でスクロールバーの見た目を変えてみました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">html</span>::<span style="color:#a6e22e">-webkit-scrollbar</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>; <span style="color:#75715e">/* スクロールバーの幅（縦スクロール用） */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#ccc</span>; <span style="color:#75715e">/* 背景色 */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">html</span>::<span style="color:#a6e22e">-webkit-scrollbar-thumb</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#666</span>; <span style="color:#75715e">/* スクロールバー本体の色 */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span>; <span style="color:#75715e">/* 丸みをつける */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="コードにコピーボタンを付ける">コードにコピーボタンを付ける</h2>
+<p>ここまでCSSの変更が多かったのですが、ようやくJavaScriptの出番です。</p>
+<p>テーマのフォルダの<code>/assets/js/main.js</code>に以下を書き込みます。ページの読み込み完了時にコードブロックについているクラス<code>highlight</code>をすべて見つけ、コピーボタンを配置していきます。</p>
+<p>コピーボタンにはクリックされたときに内部のテキストをクリップボードに貼り付けるリスナーを追加しています。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// コードブロックのコピーボタン
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>document.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;DOMContentLoaded&#34;</span>, <span style="color:#66d9ef">function</span> () {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// すべての `.highlight` クラスを持つ要素を取得
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  document.<span style="color:#a6e22e">querySelectorAll</span>(<span style="color:#e6db74">&#34;.highlight&#34;</span>).<span style="color:#a6e22e">forEach</span>((<span style="color:#a6e22e">block</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// コピーボタンを作成
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">button</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#34;button&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Copy&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">className</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;copy-button&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// コピーボタンを `.highlight` の最上部に追加
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">block</span>.<span style="color:#a6e22e">style</span>.<span style="color:#a6e22e">position</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;relative&#34;</span>; <span style="color:#75715e">// ボタンを配置するために relative を設定
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">block</span>.<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">button</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// ボタンのクリックイベント
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;click&#34;</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;Copied!&#34;</span> ) <span style="color:#66d9ef">return</span>; <span style="color:#75715e">// コピー済みの場合は何もしない
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// `.highlight` 内の `&lt;code&gt;` を取得
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">code</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">block</span>.<span style="color:#a6e22e">querySelector</span>(<span style="color:#e6db74">&#34;code&#34;</span>).<span style="color:#a6e22e">textContent</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// クリップボードにコピー
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">navigator</span>.<span style="color:#a6e22e">clipboard</span>.<span style="color:#a6e22e">writeText</span>(<span style="color:#a6e22e">code</span>).<span style="color:#a6e22e">then</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Copied!&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setTimeout</span>(() =&gt; (<span style="color:#a6e22e">button</span>.<span style="color:#a6e22e">innerText</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Copy&#34;</span>), <span style="color:#ae81ff">2000</span>); <span style="color:#75715e">// 2秒後に戻す
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      });
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  });
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>ついでにCSSも。(コードブロックの角も丸めてみた)</p>
+<p>QiitaやZennに倣って、コードブロックにホバーしたときだけコピーボタンが表示されるようにしました。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span>.<span style="color:#a6e22e">copy-button</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">right</span>: <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#333</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">5</span><span style="color:#66d9ef">px</span> <span style="color:#ae81ff">10</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">font-size</span>: <span style="color:#ae81ff">12</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">cursor</span>: <span style="color:#66d9ef">pointer</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">border-radius</span>: <span style="color:#ae81ff">4</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">opacity</span>: <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">transition</span>: <span style="color:#66d9ef">opacity</span> <span style="color:#ae81ff">0.2</span><span style="color:#66d9ef">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight</span>:<span style="color:#a6e22e">hover</span> .<span style="color:#a6e22e">copy-button</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">opacity</span>: <span style="color:#ae81ff">0.7</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">highlight</span>:<span style="color:#a6e22e">hover</span> .<span style="color:#a6e22e">copy-button</span>:<span style="color:#a6e22e">hover</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">opacity</span>: <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>結構いい感じにできそうでいいですね。</p>
+<h2 id="homeを整える">Homeを整える</h2>
+<p>HomeがPostsと大差ないので少し変えます。最新記事を5つ置くようにします。</p>
+<p>テーマフォルダの<code>layouts/_default/home.html</code>を以下のようにします。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>{{ define &#34;main&#34; }}
+</span></span><span style="display:flex;"><span>  {{ .Content }}
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;display:flex; justify-content:space-between; align-items:center;&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;最新記事の一覧&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/posts/&#34;</span> <span style="color:#a6e22e">style</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;font-size:medium; font-weight: bold;&#34;</span>&gt;すべて見る&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  {{ range (first 5 site.RegularPages) }}
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h2</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .RelPermalink }}&#34;</span>&gt;{{ .LinkTitle }}&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">h2</span>&gt;
+</span></span><span style="display:flex;"><span>    {{ .Summary }}
+</span></span><span style="display:flex;"><span>  {{ end }}
+</span></span><span style="display:flex;"><span>{{ end }}
+</span></span></code></pre></div><h2 id="おわりに">おわりに</h2>
+<p>JSを使うとさらにそれっぽくなりますね。</p>
+<p>そろそろ、このブログに関すること以外の記事を作りたいです。</p>
+
+
+  </main>
+  <footer>
+    <p>Copyright 2025. All rights reserved.</p>
+
+  </footer>
+</body>
+</html>
