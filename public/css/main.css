@@ -5,6 +5,7 @@ body {
   margin: auto; /* 横の中央揃え */
   max-width: 768px;
   padding: 1rem; /* 余白 */
+  scrollbar-gutter: stable; /* Ensure layout consistency */
 }
 
 header {
@@ -56,19 +57,27 @@ figure img {
 
 html, body {
   min-height: 100vh; /* 画面の高さいっぱいに表示 */
-  box-sizing: border-box; /* padding や border が要素のサイズに含まれる */
+}
+
+html {
+  scrollbar-gutter: stable; /* スクロールバーを表示してもずれないようにする */
+}
+
+*, ::before, ::after {
+  box-sizing: border-box; /* 子要素も border-box にする */
 }
 
 .highlight {
   padding: 0 10px;
   background-color: #272822;
+  border-radius: 8px;
   display: flex;
   overflow-x: auto; /* autoにすると必要な場合だけスクロールバーが出る */
   scrollbar-gutter: stable;
 }
 
 .highlight::-webkit-scrollbar {
-  width: 100% /* これを付けないと右端までスクロールできない */;
+  width: 100%; /* これを付けないと右端までスクロールできない */
   height: 8px; /* スクロールバーの高さ（横スクロール用） */
   background: #ccc; /* 背景色 */
 }
@@ -76,4 +85,37 @@ html, body {
 .highlight::-webkit-scrollbar-thumb {
   background: #666; /* スクロールバー本体の色 */
   border-radius: 4px; /* 丸みをつける */
+}
+
+html::-webkit-scrollbar {
+  width: 10px; /* スクロールバーの幅（縦スクロール用） */
+  background: #ccc; /* 背景色 */
+}
+
+html::-webkit-scrollbar-thumb {
+  background: #666; /* スクロールバー本体の色 */
+  border-radius: 5px; /* 丸みをつける */
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.highlight:hover .copy-button {
+  opacity: 0.7;
+}
+
+.highlight:hover .copy-button:hover {
+  opacity: 1;
 }

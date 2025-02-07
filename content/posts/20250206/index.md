@@ -17,7 +17,7 @@ tags = ['Hugo', 'Web']
 
 ```css
 .highlight::-webkit-scrollbar {
-  width: 100% /* これを付けないと右端までスクロールできない */;
+  width: 100%; /* これを付けないと右端までスクロールできない */
   height: 8px; /* スクロールバーの高さ（横スクロール用） */
   background: #ccc; /* 背景色 */
 }
