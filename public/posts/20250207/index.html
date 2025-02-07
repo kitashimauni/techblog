@@ -61,7 +61,9 @@
 <p>これまでドキュメントにはあるって書いてあるのに使えないな…という機能があったのですが、どうやらバージョンを上げていなかったのが原因のようです(当たり前)。</p>
 <p>元々は0.128.2だったものを0.143.1に上げました。Wingetを使って以下のコマンドで簡単にアップデートできました。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>winget install Hugo.Hugo.Extended
-</span></span></code></pre></div><p>どこか壊れないか不安でしたが、とりあえずは問題なさそうです。(そもそも本番環境は最新版のHugoでビルドされている気がする)</p>
+</span></span></code></pre></div><p>どこか壊れないか不安でしたが、とりあえずは問題なさそうです。<del>(そもそも本番環境は最新版のHugoでビルドされている気がする)</del></p>
+<p>何と本番環境は0.118.2でビルドされていました…(デプロイでこけた)</p>
+<p>このサイトはCloudFlareでデプロイしていますが、Hugoのバージョンを指定してビルドする際は環境変数<code>HUGO_VERSION</code>で指定できるようです(<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#use-a-specific-or-newer-hugo-version">参考</a>)。</p>
 <h2 id="ページ全体のスクロールバーの改善">ページ全体のスクロールバーの改善</h2>
 <p>縦方向にページが収まりきらない場合、何もしなくてもスクロールバーが表示されますが、表示されるときとされないときでbodyの位置がずれてしまって微妙なので直します。</p>
 <p>とりあえずは以下を書くだけで解決できます。</p>

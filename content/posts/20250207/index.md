@@ -19,7 +19,11 @@ tags = ['Hugo', 'Web']
 winget install Hugo.Hugo.Extended
 ```
 
-どこか壊れないか不安でしたが、とりあえずは問題なさそうです。(そもそも本番環境は最新版のHugoでビルドされている気がする)
+どこか壊れないか不安でしたが、とりあえずは問題なさそうです。~~(そもそも本番環境は最新版のHugoでビルドされている気がする)~~
+
+何と本番環境は0.118.2でビルドされていました…(デプロイでこけた)
+
+このサイトはCloudFlareでデプロイしていますが、Hugoのバージョンを指定してビルドする際は環境変数`HUGO_VERSION`で指定できるようです([参考](https://developers.cloudflare.com/pages/framework-guides/deploy-a-hugo-site/#use-a-specific-or-newer-hugo-version))。
 
 ## ページ全体のスクロールバーの改善
 縦方向にページが収まりきらない場合、何もしなくてもスクロールバーが表示されますが、表示されるときとされないときでbodyの位置がずれてしまって微妙なので直します。
