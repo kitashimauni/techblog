@@ -68,12 +68,20 @@ html {
 }
 
 .highlight {
-  padding: 0 10px;
   background-color: #272822;
   border-radius: 8px;
-  display: flex;
   overflow-x: auto; /* autoにすると必要な場合だけスクロールバーが出る */
   scrollbar-gutter: stable;
+  width: auto;
+  height: 100%;
+}
+
+.highlight > pre {
+  display: flex;
+}
+
+.highlight > pre > code {
+  padding: 0 10px;
 }
 
 .highlight::-webkit-scrollbar {
@@ -97,6 +105,14 @@ html::-webkit-scrollbar-thumb {
   border-radius: 5px; /* 丸みをつける */
 }
 
+.copy-button-container {
+  position: sticky; /* スクロールしても固定 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .copy-button {
   position: absolute;
   top: 10px;
@@ -112,10 +128,18 @@ html::-webkit-scrollbar-thumb {
   transition: opacity 0.2s;
 }
 
+.copy-button.copied {
+  opacity: 1 !important;
+}
+
 .highlight:hover .copy-button {
   opacity: 0.7;
 }
 
 .highlight:hover .copy-button:hover {
   opacity: 1;
+}
+
+.highlight:hover .copy-button.copied {
+  opacity: 1 !important;
 }

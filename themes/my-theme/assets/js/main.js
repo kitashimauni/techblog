@@ -5,13 +5,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // すべての `.highlight` クラスを持つ要素を取得
   document.querySelectorAll(".highlight").forEach((block) => {
     // コピーボタンを作成
+    let button_container = document.createElement("div");
+    button_container.className = "copy-button-container";
     let button = document.createElement("button");
     button.innerText = "Copy";
     button.className = "copy-button";
 
     // コピーボタンを `.highlight` の最上部に追加
     block.style.position = "relative"; // ボタンを配置するために relative を設定
-    block.appendChild(button);
+    block.insertBefore(button_container, block.firstChild);
+    button_container.appendChild(button);
 
     // ボタンのクリックイベント
     button.addEventListener("click", () => {
@@ -23,9 +26,14 @@ document.addEventListener("DOMContentLoaded", function () {
       // クリップボードにコピー
       navigator.clipboard.writeText(code).then(() => {
         button.innerText = "Copied!";
-        setTimeout(() => (button.innerText = "Copy"), 2000); // 2秒後に戻す
+        button.classList.add("copied");
+        setTimeout(() => {
+          button.classList.remove("copied");
+        }, 1800); // 1秒後に戻す
+        setTimeout(() => {
+          button.innerText = "Copy";
+        }, 2000); // 2秒後に戻す
       });
     });
   });
 });
-  
