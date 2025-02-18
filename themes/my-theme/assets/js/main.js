@@ -20,8 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
     button.addEventListener("click", () => {
       if (button.innerText === "Copied!" ) return; // コピー済みの場合は何もしない
 
-      // `.highlight` 内の `<code>` を取得
-      let code = block.querySelector("code").textContent;
+      // `.highlight` 内の最後の `<code>` を取得
+      let codes = block.querySelectorAll("code")
+      let code = codes[codes.length - 1].textContent;
 
       // クリップボードにコピー
       navigator.clipboard.writeText(code).then(() => {
