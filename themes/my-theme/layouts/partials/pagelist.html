@@ -12,12 +12,12 @@
     {{ $dateHuman := .Date | time.Format "2006/01/02" }}
     <div class="article-card">
       <div class="article-content">
-        <h2 class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}<a></h2>
+        <h2 class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <p class="article-date">投稿日: {{ $dateHuman }}</p>
         <p class="article-excerpt">{{ replace (replace (string .Summary) "<p>" "") "</p>" "" }}</p>
         <div class="article-tags">
-          {{ range sort (.GetTerms "tags") "LinkTitle" }}
-            <span><a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a></span>
+          {{- range sort (.GetTerms "tags") "LinkTitle" }}
+            <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
           {{ end }}
         </div>
       </div>

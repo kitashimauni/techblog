@@ -1,6 +1,7 @@
 +++
 title = 'ブログ制作記 #5'
 date = '2025-02-18T22:41:47+09:00'
+lastmod = '2025-02-19T22:41:47+09:00'
 draft = false
 summary = 'ブログ制作記第5回'
 tags = ['Hugo', 'Web']
@@ -79,12 +80,12 @@ ChatGPTに考えてもらったCSSを使って`pagelist.html`を作り、`layout
     {{ $dateHuman := .Date | time.Format "2006/01/02" }}
     <div class="article-card">
       <div class="article-content">
-        <h2 class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}<a></h2>
+        <h2 class="article-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
         <p class="article-date">投稿日: {{ $dateHuman }}</p>
         <p class="article-excerpt">{{ replace (replace (string .Summary) "<p>" "") "</p>" "" }}</p>
         <div class="article-tags">
-          {{ range sort (.GetTerms "tags") "LinkTitle" }}
-            <span><a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a></span>
+          {{- range sort (.GetTerms "tags") "LinkTitle" }}
+            <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
           {{ end }}
         </div>
       </div>
