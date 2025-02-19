@@ -14,11 +14,12 @@ For a given taxonomy, renders a list of terms assigned to the page.
   {{- $label := (index . 0).Parent.LinkTitle }}
   {{- $sorted := sort . "LinkTitle" }}
   <span>
-    <span>{{ $label }}:
+    <div class="article-tags">
+      <span>{{ $label -}}:
       {{- range $sorted }}
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{- if ne . (index (last 1 $sorted) 0) }}, {{ end }}
+        <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
       {{- end }}
-    </span>
+      </span>
+    </div>
   </span>
 {{- end }}

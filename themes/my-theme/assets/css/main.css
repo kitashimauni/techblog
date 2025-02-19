@@ -198,7 +198,7 @@ html::-webkit-scrollbar-thumb {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 5px; 
+  gap: 5px;
 }
 .tag {
   background-color: #007bff;
