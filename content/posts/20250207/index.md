@@ -3,7 +3,7 @@ title = 'ブログ制作記 #4'
 date = '2025-02-07T00:29:15+09:00'
 lastmod = '2025-02-08T19:12:00+09:00'
 draft = false
-summary = 'ブログ制作記第4回'
+summary = 'ブログ制作記 第4回'
 tags = ['Hugo', 'Web']
 +++
 

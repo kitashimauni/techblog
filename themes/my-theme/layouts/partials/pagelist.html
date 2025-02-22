@@ -17,7 +17,7 @@
         <p class="article-excerpt">{{ replace (replace (string .Summary) "<p>" "") "</p>" "" }}</p>
         <div class="article-tags">
           {{- range sort (.GetTerms "tags") "LinkTitle" }}
-            <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
+            <a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a>
           {{ end }}
         </div>
       </div>

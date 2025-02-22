@@ -69,9 +69,21 @@ html {
 
 /* コードブロック */
 
+.code-container {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.file-name {
+  background: #3a3f4b;
+  color: #ffffff;
+  font-size: 13px;
+  padding: 5px 12px;
+  font-weight: bold;
+}
+
 .highlight {
   background-color: #272822;
-  border-radius: 8px;
   overflow-x: auto; /* autoにすると必要な場合だけスクロールバーが出る */
   scrollbar-gutter: stable;
   width: auto;
@@ -215,4 +227,42 @@ html::-webkit-scrollbar-thumb {
 }
 .tag a:hover {
   text-decoration: underline;
+}
+
+/* タグの一覧表示 */
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+.tag-card {
+  background: #007bff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease-in-out;
+}
+.tag-card:hover {
+  transform: scale(1.05);
+}
+.tag-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+.tag-name:hover {
+  text-decoration: underline;
+}
+.tag-count {
+  background-color: #7abafb;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 3px 5px;
+  border-radius: 8px;
 }

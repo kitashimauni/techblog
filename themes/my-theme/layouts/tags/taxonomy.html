@@ -2,10 +2,13 @@
   <div>
     <h1>{{ .Title }}</h1>
     {{ .Content }}
-    <ul>
-    {{ range .Data.Terms.ByCount }}
-      <li><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}({{ .Count }})</a></li>
-    {{ end }}
-    </ul>
+    <div class="tag-container">
+      {{ range .Data.Terms.ByCount }}
+        <a href="{{ .Page.RelPermalink }}" class="tag-card">
+          <span class="tag-name">{{ .Page.LinkTitle }}</span>
+          <span class="tag-count">{{ .Count }}</span>
+        </a>
+      {{ end }}
+    </div>
   </div>
 {{ end }}
