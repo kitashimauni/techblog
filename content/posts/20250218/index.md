@@ -1,9 +1,9 @@
 +++
 title = 'ブログ制作記 #5'
 date = '2025-02-18T22:41:47+09:00'
-lastmod = '2025-02-19T22:41:47+09:00'
+lastmod = '2025-02-22T22:41:47+09:00'
 draft = false
-summary = 'ブログ制作記第5回'
+summary = 'ブログ制作記 第5回'
 tags = ['Hugo', 'Web']
 +++
 
@@ -16,6 +16,8 @@ tags = ['Hugo', 'Web']
 
 `layouts/partials/terms.html`を以下のように書き換えます。あらかじめLinkTitleの順にソートすることで実現しています。
 
+また、後述する変更と同様に、タグの見た目を変えました。
+
 ```html
 {{- $page := .page }}
 {{- $taxonomy := .taxonomy }}
@@ -24,12 +26,13 @@ tags = ['Hugo', 'Web']
   {{- $label := (index . 0).Parent.LinkTitle }}
   {{- $sorted := sort . "LinkTitle" }}
   <span>
-    <span>{{ $label }}:
+    <div class="article-tags">
+      <span>{{ $label -}}:
       {{- range $sorted }}
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-        {{- if ne . (index (last 1 $sorted) 0) }}, {{ end }}
+        <a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a>
       {{- end }}
-    </span>
+      </span>
+    </div>
   </span>
 {{- end }}
 ```
@@ -85,7 +88,7 @@ ChatGPTに考えてもらったCSSを使って`pagelist.html`を作り、`layout
         <p class="article-excerpt">{{ replace (replace (string .Summary) "<p>" "") "</p>" "" }}</p>
         <div class="article-tags">
           {{- range sort (.GetTerms "tags") "LinkTitle" }}
-            <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
+            <a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a>
           {{ end }}
         </div>
       </div>

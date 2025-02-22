@@ -17,7 +17,7 @@ For a given taxonomy, renders a list of terms assigned to the page.
     <div class="article-tags">
       <span>{{ $label -}}:
       {{- range $sorted }}
-        <span class="tag"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></span>
+        <a href="{{ .RelPermalink }}" class="tag">{{ .LinkTitle }}</a>
       {{- end }}
       </span>
     </div>
