@@ -21,17 +21,17 @@ Unityのプログラムを作る手順について、備忘録的に書きます
 
 左側のInstallsを選択して右上の"Install Editor"をクリックします。
 
-{{< figure src="./unity_installs_1.png" alt="Installsを開く">}}
+{{< figure src="./src/unity_installs_1.png" alt="Installsを開く">}}
 
 そうすると最近のリリース一覧が表示されます。基本的には"Recommended version"と書かれているものを選択すれば問題ありません。
 
 ここでは、Unity6(6000.0.40.1f)を選択します。このプロジェクトの開発に参加する人は、今後このバージョンを使って開発を行うことになります。
 
-{{< figure src="./unity_installs_2.png" alt="バージョンの選択画面">}}
+{{< figure src="./src/unity_installs_2.png" alt="バージョンの選択画面">}}
 
 これをクリックすると、"Add modules"と表示されます。基本的には何も追加しないで問題ありませんし、必要になれば後から追加することもできるのでそのままInstallボタンを押します。
 
-{{< figure src="./unity_installs_3.png" alt="Add modules">}}
+{{< figure src="./src/unity_installs_3.png" alt="Add modules">}}
 
 インストールには時間がかかるので気長に待ちましょう。
 
@@ -42,7 +42,7 @@ Unityのプロジェクトを作成します。左側のProjectsを選択して�
 
 テンプレートは3Dゲームであれば"Universal 3D"を選べば問題ないと思います。また、"Connect to Unity Cloud"はオフにしておいたほうが平和かもしれません。
 
-{{< figure src="./create_unity_project.png" alt="プロジェクト作成画面" >}}
+{{< figure src="./src/create_unity_project.png" alt="プロジェクト作成画面" >}}
 
 入力が済んだら"Create Project"をクリックしましょう。初回は時間がかかりますがエディタが立ち上がります。
 
@@ -52,13 +52,13 @@ Unityのプロジェクトを作成します。左側のProjectsを選択して�
 ### .gitignoreを作る
 `.gitignore`を作ります。これを簡単に作るツールとして、[gitignore.io](https://www.toptal.com/developers/gitignore)というものがあります。
 
-{{< figure src="./gitignore_io.png" alt="gitignore.io" >}}
+{{< figure src="./src/gitignore_io.png" alt="gitignore.io" >}}
 
 入力欄に、"Unity"・"JetBrains"・"macOS"を入力してCreateボタンを押します。
 
 すると、以下のように`.gitignore`に書くべき内容が出力されるので、プロジェクトディレクトリの直下に`.gitignore`を作ってコピペします。
 
-{{< figure src="./gitignore_io_result.png" alt="gitignore.ioで生成した結果" >}}
+{{< figure src="./src/gitignore_io_result.png" alt="gitignore.ioで生成した結果" >}}
 
 "JetBrains"と"macOS"は開発環境における不要なファイルを除く目的で追加しています。
 
@@ -180,7 +180,7 @@ GitHub上でもリポジトリを作りましょう。Repositories > New reposit
 
 また、"Add a REDOME file"などにチェックを入れると少し面倒なことになります。ここではチェックを入れず、後から追加するほうがよいと思います。
 
-{{< figure src="./create_repo.png" alt="リポジトリ作成画面">}}
+{{< figure src="./src/create_repo.png" alt="リポジトリ作成画面">}}
 
 必要事項を入力して右下の"Create repository"をクリックすれば完了です。
 
