@@ -27,11 +27,11 @@ Unityのプログラムを作る手順について、備忘録的に書きます
 
 ここでは、Unity6(6000.0.40.1f)を選択します。このプロジェクトの開発に参加する人は、今後このバージョンを使って開発を行うことになります。
 
-{{< figure src="./src/unity_installs_2.png" alt="バージョンの選択画面">}}
+{{< figure src="./src/unity_installs_2.png" alt="バージョンの選択画面" >}}
 
 これをクリックすると、"Add modules"と表示されます。基本的には何も追加しないで問題ありませんし、必要になれば後から追加することもできるのでそのままInstallボタンを押します。
 
-{{< figure src="./src/unity_installs_3.png" alt="Add modules">}}
+{{< figure src="./src/unity_installs_3.png" alt="Add modules" >}}
 
 インストールには時間がかかるので気長に待ちましょう。
 
