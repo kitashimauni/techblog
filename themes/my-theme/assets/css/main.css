@@ -2,10 +2,13 @@ body {
   color: #222;
   font-family: sans-serif;
   line-height: 1.5;
-  margin: auto; /* 横の中央揃え */
+  margin: auto;
+  /* 横の中央揃え */
   max-width: 768px;
-  padding: 1rem; /* 余白 */
-  scrollbar-gutter: stable; /* Ensure layout consistency */
+  padding: 1rem;
+  /* 余白 */
+  scrollbar-gutter: stable;
+  /* Ensure layout consistency */
 }
 
 header {
@@ -27,18 +30,23 @@ a {
 }
 
 nav ul {
-  display: flex; /* 横並び */
-  list-style: none; /* 箇条書きの点を消す */
+  display: flex;
+  /* 横並び */
+  list-style: none;
+  /* 箇条書きの点を消す */
   padding: 8px 0;
-  margin: 0; /* ナビゲーション全体の上下の余白 */  
+  margin: 0;
+  /* ナビゲーション全体の上下の余白 */
 }
 
 nav li {
-  margin: 0 5px; /* 各項目の間隔を調整 */
+  margin: 0 5px;
+  /* 各項目の間隔を調整 */
 }
 
 nav a {
-  text-decoration: none; /* 下線を消す */
+  text-decoration: none;
+  /* 下線を消す */
   font-size: large;
   color: #333;
   padding: 8px 15px;
@@ -51,20 +59,28 @@ nav a:hover {
 }
 
 figure img {
-  max-width: 100%;  /* body の横幅以上に広がらない */
-  margin: 0 auto;   /* 中央寄せ */
+  max-width: 100%;
+  /* body の横幅以上に広がらない */
+  margin: 0 auto;
+  /* 中央寄せ */
 }
 
-html, body {
-  min-height: 100vh; /* 画面の高さいっぱいに表示 */
+html,
+body {
+  min-height: 100vh;
+  /* 画面の高さいっぱいに表示 */
 }
 
 html {
-  scrollbar-gutter: stable; /* スクロールバーを表示してもずれないようにする */
+  scrollbar-gutter: stable;
+  /* スクロールバーを表示してもずれないようにする */
 }
 
-*, ::before, ::after {
-  box-sizing: border-box; /* 子要素も border-box にする */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  /* 子要素も border-box にする */
 }
 
 /* コードブロック */
@@ -84,43 +100,54 @@ html {
 
 .highlight {
   background-color: #272822;
-  overflow-x: auto; /* autoにすると必要な場合だけスクロールバーが出る */
+  overflow-x: auto;
+  /* autoにすると必要な場合だけスクロールバーが出る */
   scrollbar-gutter: stable;
   width: auto;
   height: 100%;
 }
 
-.highlight > pre {
+.highlight>pre {
   display: flex;
 }
 
-.highlight > pre > code {
+.highlight>pre>code {
   padding: 0 10px;
 }
 
 .highlight::-webkit-scrollbar {
-  width: 100%; /* これを付けないと右端までスクロールできない */
-  height: 8px; /* スクロールバーの高さ（横スクロール用） */
-  background: #ccc; /* 背景色 */
+  width: 100%;
+  /* これを付けないと右端までスクロールできない */
+  height: 8px;
+  /* スクロールバーの高さ（横スクロール用） */
+  background: #ccc;
+  /* 背景色 */
 }
 
 .highlight::-webkit-scrollbar-thumb {
-  background: #666; /* スクロールバー本体の色 */
-  border-radius: 4px; /* 丸みをつける */
+  background: #666;
+  /* スクロールバー本体の色 */
+  border-radius: 4px;
+  /* 丸みをつける */
 }
 
 html::-webkit-scrollbar {
-  width: 10px; /* スクロールバーの幅（縦スクロール用） */
-  background: #ccc; /* 背景色 */
+  width: 10px;
+  /* スクロールバーの幅（縦スクロール用） */
+  background: #ccc;
+  /* 背景色 */
 }
 
 html::-webkit-scrollbar-thumb {
-  background: #666; /* スクロールバー本体の色 */
-  border-radius: 5px; /* 丸みをつける */
+  background: #666;
+  /* スクロールバー本体の色 */
+  border-radius: 5px;
+  /* 丸みをつける */
 }
 
 .copy-button-container {
-  position: sticky; /* スクロールしても固定 */
+  position: sticky;
+  /* スクロールしても固定 */
   left: 0;
   top: 0;
   width: 100%;
@@ -166,6 +193,7 @@ html::-webkit-scrollbar-thumb {
   gap: 20px;
   justify-content: center;
 }
+
 .article-card {
   background: white;
   border-radius: 10px;
@@ -174,6 +202,7 @@ html::-webkit-scrollbar-thumb {
   width: 300px;
   transition: transform 0.2s ease-in-out;
 }
+
 /* .article-card:hover {
   transform: scale(1.05);
 } */
@@ -182,36 +211,44 @@ html::-webkit-scrollbar-thumb {
   height: 180px;
   object-fit: cover;
 }
+
 .article-content {
   padding: 15px;
 }
+
 .article-title {
   font-size: 18px;
   font-weight: bold;
   margin: 0 0 10px;
 }
+
 .article-title a {
   color: black;
   text-decoration: none;
 }
+
 .article-title a:hover {
   text-decoration: underline;
 }
+
 .article-date {
   font-size: 12px;
   color: #777;
   margin-bottom: 10px;
 }
+
 .article-excerpt {
   font-size: 14px;
   color: #555;
 }
+
 .article-tags {
   margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
+
 .tag {
   background-color: #007bff;
   color: white;
@@ -221,10 +258,12 @@ html::-webkit-scrollbar-thumb {
   text-decoration: none;
   vertical-align: middle;
 }
+
 .tag a {
   color: white;
   text-decoration: none;
 }
+
 .tag a:hover {
   text-decoration: underline;
 }
@@ -236,6 +275,7 @@ html::-webkit-scrollbar-thumb {
   gap: 15px;
   justify-content: center;
 }
+
 .tag-card {
   background: #007bff;
   border-radius: 8px;
@@ -246,18 +286,22 @@ html::-webkit-scrollbar-thumb {
   gap: 8px;
   transition: transform 0.2s ease-in-out;
 }
+
 .tag-card:hover {
   transform: scale(1.05);
 }
+
 .tag-name {
   font-size: 16px;
   font-weight: bold;
   color: #ffffff;
   text-decoration: none;
 }
+
 .tag-name:hover {
   text-decoration: underline;
 }
+
 .tag-count {
   background-color: #7abafb;
   color: white;
@@ -265,4 +309,65 @@ html::-webkit-scrollbar-thumb {
   font-weight: bold;
   padding: 3px 5px;
   border-radius: 8px;
+}
+
+/* リンクカードの表示 */
+.link-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  overflow: hidden;
+  height: 150px;
+}
+
+.link-card__image img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.link-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  height: 100%;
+}
+
+.link-card__content:hover {
+  background: #eee;
+}
+
+.link-card__title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.link-card__description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.link-card__url {
+  font-size: 12px;
+  color: #555;
 }

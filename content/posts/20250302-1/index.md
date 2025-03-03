@@ -102,7 +102,9 @@ PromptとNegative Promptをコピペして、Generateボタンを押します。
 
 {{< figure src="./src/generated.png" alt="生成された画像" width=50% >}}
 
-テキストからの画像生成以外にもいろいろできそうなのでもう少し遊んでみたいです。
+PromptかNegative Promptで変な出力がされないような指示を与えるのが重要みたいです。この部分は何を生成するにしても使いまわせそうですね。
+
+単にテキストからの画像を生成する以外にもいろいろできそうなのでもう少し遊んでみたいです。
 
 {{< rawhtml >}}
 <script async src="//iframely.net/embed.js"></script>
