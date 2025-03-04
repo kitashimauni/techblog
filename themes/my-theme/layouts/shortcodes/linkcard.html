@@ -44,6 +44,10 @@
       {{- range $found }}
         {{- $image = index . 1 }}
       {{- end }}
+      {{- if eq (slicestr $image 0 1) "/" }}
+        {{- $host := urls.JoinPath "https://" $url.Hostname }}
+        {{- $image =  urls.JoinPath $host $image }}
+      {{- end }}
     {{- end }}
 
     <!-- get siteURL -->
@@ -56,7 +60,7 @@
   {{ end }}
 {{ end }}
 
-<a href="{{ $url }}" class="link-card">
+<a href="{{ $url }}" target="_blank" class="link-card">
   <div class="link-card__content">
     <p class="link-card__title">{{ $title }}</p>
     <p class="link-card__description">{{ $description }}</p>

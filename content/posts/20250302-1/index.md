@@ -8,11 +8,7 @@ tags = ['生成AI']
 
 stable-diffusion-webuiを動かしてみます。
 
-{{< rawhtml >}}
-<div style="width: 50%">
-<div class="iframely-embed"><div class="iframely-responsive" style="padding-bottom: 50%; padding-top: 120px; margin: 0;"><a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui" data-iframely-url="//iframely.net/07yK5R9"></a></div></div>
-</div>
-{{< /rawhtml >}}
+{{< linkcard "https://github.com/AUTOMATIC1111/stable-diffusion-webui" >}}
 
 ## 環境構築
 面倒な環境構築はしたくないので、簡単な方法でやっていきます。環境は以下の通りですが、GPUさえ動けばどこでも動くと思います。
@@ -52,11 +48,9 @@ uv pip install pip # pipのインストール
 {{< figure src="./src/webui.png" alt="起動した様子" >}}
 
 ## 別のモデルを入れてみる
-デフォルトで入ってくるモデルはあまり性能が良くなさそうなので、イラスト生成用に追加学習されたstable-diffusionベースのモデルであるAnimePastelDreamを入れてみます。ダウンロードボタンを押せばダウンロードできます。
+デフォルトで入ってくるモデルはあまり性能が良くなさそうなので、イラスト生成用に追加学習されたstable-diffusionベースのモデルであるAnimePastelDreamを入れてみます。下記のページでダウンロードボタンを押せばダウンロードできます。
 
-{{< rawhtml >}}
-<div class="iframely-embed"><div class="iframely-responsive" style="height: 140px; padding-bottom: 0;"><a href="https://civitai.com/models/23521/anime-pastel-dream" data-iframely-url="//iframely.net/522w95M"></a></div></div>
-{{< /rawhtml >}}
+{{< linkcard "https://civitai.com/models/23521/anime-pastel-dream" >}}
 
 ダウンロードした`.safetensor`を`models/Stable-diffusion`フォルダに入れます。この状態で左上のリロードボタンを押すと、先ほど入れたAnimePasteDreamが選択できるようになっているので選択します。
 
@@ -104,7 +98,7 @@ PromptとNegative Promptをコピペして、Generateボタンを押します。
 
 PromptかNegative Promptで変な出力がされないような指示を与えるのが重要みたいです。この部分は何を生成するにしても使いまわせそうですね。
 
-単にテキストからの画像を生成する以外にもいろいろできそうなのでもう少し遊んでみたいです。
+単にテキストから画像を生成する以外にもいろいろできそうなのでもう少し遊んでみたいです。
 
 {{< rawhtml >}}
 <script async src="//iframely.net/embed.js"></script>

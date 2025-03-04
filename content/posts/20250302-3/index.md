@@ -29,10 +29,96 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
 ただし、全てのウェブサイトにOGPが設定されているとは限らないため、以下のカッコ内の順序に従って情報を得ます。
 
 - タイトル (og:title, titleタグ)
-- サイト画像 (og:image, 最初のimgタグ)
+- サイト画像 (og:image, 最初のimgタグのsrc)
 - 説明 (og:description, metaタグのname=description)
 - サイトURL (与えられたURL)
 
+作成したコードは以下です。長いので畳み込んであります。
+正規表現を用いて特定のタグの値を抜き出しています。
 
+{{< details summary="作成したhtml" >}}
+```html {name="layouts/shortcodes/linkcard.html"}
+{{- $url := urls.Parse (.Get 0) }}
+{{- $title := "" }}
+{{- $description := "" }}
+{{- $image := "" }}
+{{- $siteURL := "" }}
+{{- with try (resources.GetRemote $url) }}
+  {{ with .Err }} <!-- Error occurred while fetching remote -->
+    {{- warnf "%s" . }}
+    {{- $title = "Error occurred while fetching remote" }}
+    {{- $siteURL = $url.Hostname }}
+  {{ else with .Value }} <!-- get OGP remote resource -->
+    {{- $content := .Content }}
+    <!-- get title -->
+    {{- $found := findRESubmatch `og:title["\'].*?content=["\'](.*?)["\']` $content 1 }}
+    {{- range $found }}
+      {{- $title = index . 1 }}
+    {{- end }}
+    {{- if eq $title "" }}
+      {{- $found := findRESubmatch `<title>(.*?)</title>` $content 1 }}
+      {{- range $found }}
+        {{- $title = index . 1 }}
+      {{- end }}
+    {{- end }}
+
+    <!-- get description -->
+    {{- $found := findRESubmatch `og:description["\'].*?content=["\'](.*?)["\']` $content 1 }}
+    {{- range $found }}
+      {{- $description = index . 1 }}
+    {{- end }}
+    {{- if eq $description "" }}
+      {{- $found := findRESubmatch `description["\'].*?content=["\''](.*?)["\']` $content 1 }}
+      {{- range $found }}
+        {{- $description = index . 1 }}
+      {{- end }}
+    {{- end }}
+
+    <!-- get image -->
+    {{- $found := findRESubmatch `og:image["\'].*?content=["\'](.*?)["\']` $content 1 }}
+    {{- range $found }}
+      {{- $image = index . 1 }}
+    {{- end }}
+    {{- if eq $image "" }}
+      {{- $found := findRESubmatch `<img.*?src=["\'](.*?)["\']` $content 1 }}
+      {{- range $found }}
+        {{- $image = index . 1 }}
+      {{- end }}
+      {{- if eq (slicestr $image 0 1) "/" }}
+        {{- $host := urls.JoinPath "https://" $url.Hostname }}
+        {{- $image =  urls.JoinPath $host $image }}
+      {{- end }}
+    {{- end }}
+
+    <!-- get siteURL -->
+    {{- $siteURL = $url.Hostname }}
+
+  {{ else }} <!-- 404 -->
+    {{ warnf "Unable to get remote resource %q" $url }}
+    {{ $title = "Unable to get remote resource" }}
+    {{ $siteURL = $url.Hostname }}
+  {{ end }}
+{{ end }}
+
+<a href="{{ $url }}" target="_blank" class="link-card">
+  <div class="link-card__content">
+    <p class="link-card__title">{{ $title }}</p>
+    <p class="link-card__description">{{ $description }}</p>
+    <p class="link-card__url">{{ $siteURL }}</p>
+  </div>
+  <div class="link-card__image">
+    <img src="{{ $image }}" alt="サイトの画像">
+  </div>
+</a>
+```
+{{< /details>}}
+
+このshortcodeを使ってmdで以下のように書くことでリンクカードを埋め込むことができます。
+
+```md
+{{</* linkcard "https://www.youtube.com" */>}}
+```
+
+以下のように出力されます。
 
 {{< linkcard "https://www.youtube.com" >}}
