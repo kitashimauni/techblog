@@ -25,13 +25,13 @@ Unityのプログラムを作る手順について、備忘録的に書きます
 
 そうすると最近のリリース一覧が表示されます。基本的には"Recommended version"と書かれているものを選択すれば問題ありません。
 
-ここでは、Unity6(6000.0.40.1f)を選択します。このプロジェクトの開発に参加する人は、今後このバージョンを使って開発を行うことになります。
+ここでは、Unity6(6000.0.40.f1)を選択します。このプロジェクトの開発に参加する人は、今後このバージョンを使って開発を行うことになります。
 
-{{< figure src="./src/unity_installs_2.png" alt="バージョンの選択画面">}}
+{{< figure src="./src/unity_installs_2.png" alt="バージョンの選択画面" >}}
 
 これをクリックすると、"Add modules"と表示されます。基本的には何も追加しないで問題ありませんし、必要になれば後から追加することもできるのでそのままInstallボタンを押します。
 
-{{< figure src="./src/unity_installs_3.png" alt="Add modules">}}
+{{< figure src="./src/unity_installs_3.png" alt="Add modules" >}}
 
 インストールには時間がかかるので気長に待ちましょう。
 
@@ -44,7 +44,7 @@ Unityのプロジェクトを作成します。左側のProjectsを選択して�
 
 {{< figure src="./src/create_unity_project.png" alt="プロジェクト作成画面" >}}
 
-入力が済んだら"Create Project"をクリックしましょう。初回は時間がかかりますがエディタが立ち上がります。
+入力が済んだら"Create project"をクリックしましょう。初回は時間がかかりますがエディタが立ち上がります。
 
 起動を待つ間にこの後のGit関連の作業をしておくと効率的かもしれません。
 
@@ -145,7 +145,7 @@ LightingData.asset     binary
 LFSは使わないのでその部分は除いています。
 
 ### .editorconfigを作る
-Visual Studioではデフォルトの文字コードがUTF-8でないため、VisualStudioで日本語を書くと他のエディタで文字化けすることがあります。
+Visual Studioではデフォルトの文字コードがUTF-8でないため、Visual Studioで日本語を書くと他のエディタで文字化けすることがあります。
 
 これを防ぐため、以下の内容を書き込んだ`.editorconfig`をプロジェクトディレクトリの直下に置きます。
 

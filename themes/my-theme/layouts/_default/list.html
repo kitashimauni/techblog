@@ -1,5 +1,10 @@
 {{ define "main" }}
   <h1>{{ .Title }}</h1>
   {{ .Content }}
-  {{ partial "pagelist.html" (dict "pages" .Pages) }}
+
+  {{ $paginator := .Paginate .Pages }}
+
+  {{ partial "pagelist.html" (dict "pages" $paginator.Pages) }}
+
+  {{ partial "pagination.html" (dict "page" . "format" "custom") }}
 {{ end }}
