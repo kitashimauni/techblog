@@ -22,6 +22,11 @@ name = 'About'
 pageRef = '/about'
 weight = 40
 
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = 'list'
+
 [module]
   [module.hugoVersion]
     extended = false

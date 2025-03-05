@@ -1,5 +1,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<meta name="description" content="{{ .Summary }}">
+<meta name="robots" content="index, follow">  <!-- クローラーにページをインデックスさせる -->
+{{ with .GitInfo }}
+  <meta name="author" content="{{ .AuthorName }}">  <!-- 作成者情報 -->
+{{- end }}
+<meta name="generator" content="Hugo">  <!-- 生成ツール -->
+
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ .Summary }}">
+<!-- <meta property="og:image" content="https://example.com/image.jpg"> --> <!-- TODO: アイコン画像の追加  -->
+<meta property="og:url" content="{{ urls.JoinPath site.BaseURL .RelPermalink }}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.Title }}">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ .Summary }}">
+<!-- <meta name="twitter:image" content="https://example.com/image.jpg"> --> <!-- TODO: アイコン画像の追加 -->
+<!-- <meta name="twitter:site" content="@Twitterアカウント"> --> <!-- のちほど追加するかも -->
+
+
+
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}

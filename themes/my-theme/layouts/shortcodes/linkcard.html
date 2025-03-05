@@ -66,7 +66,9 @@
     <p class="link-card__description">{{ $description }}</p>
     <p class="link-card__url">{{ $siteURL }}</p>
   </div>
-  <div class="link-card__image">
-    <img src="{{ $image }}" alt="サイトの画像">
-  </div>
+  {{ if ne $image "" }}
+    <div class="link-card__image">
+      <img src="{{ $image }}" alt="サイトの画像">
+    </div>
+  {{ end }}
 </a>
