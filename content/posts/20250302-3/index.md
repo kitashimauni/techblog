@@ -126,6 +126,15 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
 ## ページネーション
 現状では、記事の一覧では1つのページに全ての記事が表示されます。これを、10記事ごとに分割します。
 
+まず、`hugo.toml`に以下を追記します。`pagerSize`は各ページに何記事表示するか、`path`はページネーションの際のパスです。
+
+```toml {name="hugo.toml"}
+[pagination]
+  disableAliases = false
+  pagerSize = 10
+  path = 'list'
+```
+
 デフォルトのページネーション機能がありますが、今後調整する可能性があることを踏まえて、`layouts/partials/pagination.html`を新たに作成し、以下のコードをコピーします。
 
 {{< linkcard "https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/pagination.html" >}}
