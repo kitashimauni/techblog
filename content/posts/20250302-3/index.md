@@ -1,6 +1,7 @@
 +++
 title = 'ブログ制作記 #7'
 date = '2025-03-02T20:17:29+09:00'
+lastmod = '2025-03-07T20:17:29+09:00'
 draft = false
 summary = 'ブログ制作記 第7回'
 tags = ['Web', 'Hugo']
@@ -513,6 +514,13 @@ head内の情報を増やします。`layouts/partials/head.html`に追記して
 アイコン画像はまだないので保留です。
 
 ```html {{name="layouts/partials/head.html"}}
+{{- $title := "" }}
+{{ if .IsHome }}
+  {{ $title = site.Title }}
+{{ else }}
+  {{ $title = printf "%s | %s" .Title site.Title }}
+{{ end }}
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -524,7 +532,7 @@ head内の情報を増やします。`layouts/partials/head.html`に追記して
 {{- end }}
 <meta name="generator" content="Hugo">  <!-- 生成ツール -->
 
-<meta property="og:title" content="{{ .Title }}">
+<meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ .Summary }}">
 <!-- <meta property="og:image" content="https://example.com/image.jpg"> --> <!-- TODO: アイコン画像の追加  -->
 <meta property="og:url" content="{{ urls.JoinPath site.BaseURL .RelPermalink }}">
@@ -532,14 +540,14 @@ head内の情報を増やします。`layouts/partials/head.html`に追記して
 <meta property="og:site_name" content="{{ site.Title }}">
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ .Summary }}">
 <!-- <meta name="twitter:image" content="https://example.com/image.jpg"> --> <!-- TODO: アイコン画像の追加 -->
 <!-- <meta name="twitter:site" content="@Twitterアカウント"> --> <!-- のちほど追加するかも -->
 
 
 
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+<title>{{ $title }}</title>
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
 ```
