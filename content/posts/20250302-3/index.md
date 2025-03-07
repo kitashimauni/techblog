@@ -502,6 +502,21 @@ CSSで見た目を整えます。HTMLをいじらずにCSSを書くだけで十�
 }
 ```
 
+最後に記事一覧の表示部分である`layouts/_default/list.html`を以下のようにして完了です。
+
+```html {name=""}
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{ $paginator := .Paginate .Pages }}
+
+  {{ partial "pagelist.html" (dict "pages" $paginator.Pages) }}
+
+  {{ partial "pagination.html" (dict "page" . "format" "custom") }}
+{{ end }}
+```
+
 出来上がりはこのような感じです。かなりいい感じだと思います。
 
 {{< figure src="/src/pagination.png" alt="完成したpagination" >}}
