@@ -1,6 +1,6 @@
 +++
 title = 'Unityのプロジェクト作成方法'
-date = '2025-02-28T21:18:19+09:00'
+date = '2025-03-18T21:18:19+09:00'
 draft = false
 summary = 'Unityでプロジェクトを作成する際の手順'
 tags = ['Unity']
@@ -214,13 +214,13 @@ git config --global init.defaultBranch main
 ### 必要なパッケージを入れる
 開発に必要なパッケージを入れていきます。最近のエディタでは、よく使うパッケージはデフォルトで入っているので外部パッケージを入れていきます。
 
-Window > PackageManagerでPackageManagerを開いて左上の"+"から"Install Package from git URL"を選択し、必要に応じて以下のパッケージを入れていきます。
+[Window] > [Package Manager] でPackageManagerを開いて左上の"+"から"Install Package from git URL"を選択し、必要に応じて以下のパッケージを入れていきます。
 
 #### Extenject
 依存性注入に使います。
 
 まれに、Extenjectが依存するパッケージがデフォルトで入っていないことがあるので、エラー文を見てPackage Managerから不足しているものをインストールしてください。
-(今回はAddressablesが入っていませんでした)
+(今回はAddressablesが入っていませんでした。[Window] > [Package Manager]で左側からUnity Registryを選択し、Addressablesを探してInstallを押します。)
 
 ```text
 https://github.com/Mathijs-Bakker/Extenject.git?path=UnityProject/Assets/Plugins/Zenject/Source
@@ -251,6 +251,8 @@ NugetForUnityを使う場合は、`.gitignore`に以下を追記しておきま�
 /Assets/Packages/
 /Assets/Packages.meta
 ```
+
+注: Nugetのパッケージは初回起動時に解決されないため、このプロジェクトのリポジトリをクローンして最初に起動した際にエラーが出ることがありますが、この場合はIngoreしてからエディタを閉じて開きなおしてください。
 
 #### その他
 上記の他にも、人型の3Dモデルを扱うのに便利なVRMやLiltoonなど必要に応じて入れましょう。ここで入れなくても、必要になったときに入れれば問題ありません。
