@@ -8,7 +8,7 @@ tags = ['Unity']
 
 所属しているサークルでExtenject講習会をやりました。
 
-{{< linkcard src="https://github.com/tuatmcc/ExtenjectLecture" >}}
+{{< linkcard "https://github.com/tuatmcc/ExtenjectLecture" >}}
 
 DIについて完全に理解しているわけではないですが、今私が理解している部分を書きました。
 
