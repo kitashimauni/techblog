@@ -1,7 +1,7 @@
 +++
 title = 'Extenject講習'
 date = '2025-03-30T19:09:48+09:00'
-draft = true
+draft = false
 summary = 'Extenject講習会を実施しました'
 tags = ['Unity']
 +++
