@@ -11,7 +11,9 @@ tags = ['Hugo', 'Web']
 ## ブログタイトルを考える
 いくら何でも「技術ブログ」は単純すぎます。
 
-「**テック島開拓記**」と命名しました。技術の島を開拓していくという意味がこめられています(?)。
+「**テック島開拓記**」(てっくとうかいたくき or てっくしまかいたくき or てっくじまかいたくき)
+
+と命名しました。技術の島を開拓していくという意味がこめられています(?)。
 
 (友人の案を参考に考えました。ありがとう。)
 
@@ -92,7 +94,7 @@ PC表示ならメニューを横並びにしても問題は起きないのです
   font-size: 32px;
   cursor: pointer;
   position: absolute;
-  top: 40px;
+  top: 20px;
   right: 30px;
   z-index: 1001;
 }
@@ -114,7 +116,8 @@ PC表示ならメニューを横並びにしても問題は起きないのです
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* 半透明 */
+  background: rgba(0, 0, 0, 0.5);
+  /* 半透明 */
   visibility: hidden;
   opacity: 0;
   transition: opacity 0.3s ease-in-out, visibility 0.3s;
@@ -125,6 +128,7 @@ PC表示ならメニューを横並びにしても問題は起きないのです
 @media (max-width: 768px) {
   .menu-icon {
     display: block;
+    position: fixed;
   }
 
   /* メニューの初期状態: 画面外に隠す */
@@ -139,7 +143,7 @@ PC表示ならメニューを横並びにしても問題は起きないのです
     height: 100%;
     background: white;
     border-left: 1px solid #ccc;
-    padding: 20px;
+    padding: 0;
     padding-top: 100px;
     transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
@@ -148,18 +152,22 @@ PC表示ならメニューを横並びにしても問題は起きないのです
 
   nav ul li {
     margin: 15px 0;
+    width: 100%;
   }
 
   nav ul li a {
+    display: block;
     font-size: 20px;
+    width: 100%;
   }
 
   /* メニューが開いたとき */
-  #menu-toggle:checked + .menu-icon + .overlay {
+  #menu-toggle:checked+.menu-icon+.overlay {
     visibility: visible;
     opacity: 1;
   }
-  #menu-toggle:checked + .menu-icon + .overlay + ul {
+
+  #menu-toggle:checked+.menu-icon+.overlay+ul {
     right: 0;
   }
 
@@ -173,4 +181,30 @@ PC表示ならメニューを横並びにしても問題は起きないのです
     display: block;
   }
 }
+
+/* メニューオープン中に body に追加されるクラス */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* iOS対策 */
+}
 ```
+
+ハンバーガーメニューを開いたときに背景をスクロールできないようにするため、以下のJSを書いてチェックボックスがオンの時に`no-scroll`をbodyに付与してスクロールしないようにします。
+
+```js {name="assets/js/main.js"}
+// ハンバーガーメニューを開いているときにスクロールを無効にする
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById('menu-toggle');
+
+  menuToggle.addEventListener('change', function () {
+    if (menuToggle.checked) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  });
+});
+```
+
+## ハンバーガーメニューのマークにアニメーションを付ける
+

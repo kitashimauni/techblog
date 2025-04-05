@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ボタンのクリックイベント
     button.addEventListener("click", () => {
-      if (button.innerText === "Copied!" ) return; // コピー済みの場合は何もしない
+      if (button.innerText === "Copied!") return; // コピー済みの場合は何もしない
 
       // `.highlight` 内の最後の `<code>` を取得
       let codes = block.querySelectorAll("code")
@@ -36,5 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2000); // 2秒後に戻す
       });
     });
+  });
+});
+
+// ハンバーガーメニューを開いているときにスクロールを無効にする
+document.addEventListener('DOMContentLoaded', function () {
+  const menuToggle = document.getElementById('menu-toggle');
+
+  menuToggle.addEventListener('change', function () {
+    if (menuToggle.checked) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
   });
 });
