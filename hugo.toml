@@ -1,5 +1,8 @@
 baseURL = 'https://tech.n-island.dev/'
 languageCode = 'ja-jp'
-title = '技術ブログ'
+title = 'テック島開拓記'
 theme = 'my-theme'
 pagenate = 10
+
+[params]
+titleImagePath = 'images/title.png'

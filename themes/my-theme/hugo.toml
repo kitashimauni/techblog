@@ -2,6 +2,9 @@ baseURL = 'https://example.org/'
 languageCode = 'en-US'
 title = 'My New Hugo Site'
 
+[params]
+titleImagePath = 'images/title.png'
+
 [[menus.main]]
 name = 'Home'
 pageRef = '/'
