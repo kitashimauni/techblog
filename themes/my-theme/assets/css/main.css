@@ -35,6 +35,11 @@ a {
   text-decoration: none;
 }
 
+a, button, input, textarea, label, img {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
 /* PC表示のナビゲーション */
 nav ul {
   display: flex;
@@ -108,8 +113,6 @@ nav a:hover {
     cursor: pointer;
     margin: auto;
     height: 50px;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
   }
 
   /* メニューの初期状態: 画面外に隠す */

@@ -364,5 +364,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {{< linkcard "https://photopizza.design/css_hamburger_menu/" >}}
 
+## 選択時に水色になるのをなくす
+CSSのデフォルト設定で、画像やリンクを触ったときに水色になってしまいます。これをなくすために、`assets/css/main.css`に以下を書き込みました。
+
+```css {name="assets/css/main.css"}
+a, button, input, textarea, label, img {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+```
+
 ## おわりに
 レスポンシブ対応もできてばっちりです。そろそろデザインを凝っていきたいです。
