@@ -112,7 +112,7 @@ nav a:hover {
     position: fixed;
     cursor: pointer;
     margin: auto;
-    height: 50px;
+    height: 40px;
   }
 
   /* メニューの初期状態: 画面外に隠す */
