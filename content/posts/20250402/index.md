@@ -27,6 +27,27 @@ pagenate = 10
 
 また、上部タイトルをクリックしてホームに戻れるように改良します。
 
+`layouts/partials/header.html`を以下のように書き換えることで、サイト上部のタイトル部分を画像にできるようにしました。
+
+```html {name="layouts/partials/header.html"}
+{{ with resources.Get (.Site.Param "titleImagePath") }}
+  <a href={{ site.Home.Permalink }}>
+    <img class="title-image" src="{{ .RelPermalink }}" alt="Title Image">
+  </a>
+{{ else }}
+  <h1 class="site-title">
+    <a href={{ site.Home.Permalink }}>{{ site.Title }}</a>
+  </h1>
+{{ end }}
+{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+```
+
+このように変更したうえで`assets/images/title.png`などの画像を置き、`hugo.toml`に以下のように書き込むとタイトル部分が画像になります。
+```toml {name="hugo.toml"}
+[params]
+titleImagePath = 'images/title.png'
+```
+
 ## ハンバーガーメニューを作る
 PC表示ならメニューを横並びにしても問題は起きないのですが、スマホ表示だとメニュー欄が窮屈でこれ以上増やせない状態です。
 

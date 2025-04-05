@@ -112,7 +112,7 @@ nav a:hover {
     height: 100%;
     background: white;
     border-left: 1px solid #ccc;
-    padding: 20px;
+    padding: 0;
     padding-top: 100px;
     transition: right 0.3s ease-in-out;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
@@ -121,10 +121,13 @@ nav a:hover {
 
   nav ul li {
     margin: 15px 0;
+    width: 100%;
   }
 
   nav ul li a {
+    display: block;
     font-size: 20px;
+    width: 100%;
   }
 
   /* メニューが開いたとき */
@@ -370,6 +373,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .tag {
+  display: inline-block;
   background-color: #007bff;
   color: white;
   font-size: 12px;
