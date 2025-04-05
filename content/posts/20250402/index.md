@@ -207,4 +207,162 @@ document.addEventListener('DOMContentLoaded', function () {
 ```
 
 ## ハンバーガーメニューのマークにアニメーションを付ける
+前章でハンバーガーメニューを付けましたが、アニメーションが欲しくなったので付けてみます。
 
+まずは`layouts/partials/menu.html`に書かれている`nav`タグの部分を以下のように変更します。
+
+```html {name="layouts/partials/menu.html"}
+<nav>
+<input type="checkbox" id="menu-toggle">
+<label for="menu-toggle" class="menu-icon">
+    <div class="hamburger"></div>
+</label>
+<label for="menu-toggle" class="overlay"></label>
+<ul class="menu">
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+</ul>
+</nav>
+```
+
+そのうえで、`assets/css/main.css`を以下のように書き換えます。
+
+```css
+/* ハンバーガーメニュー */
+.menu-icon {
+  display: none;
+  font-size: 32px;
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  z-index: 1001;
+}
+
+.menu-icon .menu-close {
+  display: none;
+  /* 初期状態は非表示 */
+}
+
+/* メニューのトグル用チェックボックス */
+#menu-toggle {
+  display: none;
+}
+
+/* 半透明のオーバーレイ（デフォルトは非表示） */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* 半透明 */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s;
+  z-index: 999;
+}
+
+/* スマホ向けレイアウト */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+    position: fixed;
+    cursor: pointer;
+    margin: auto;
+    height: 50px;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  /* メニューの初期状態: 画面外に隠す */
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    /* 初期位置は画面外 */
+    width: 300px;
+    height: 100%;
+    background: white;
+    border-left: 1px solid #ccc;
+    padding: 0;
+    padding-top: 100px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+
+  .menu-icon .hamburger {
+    background: black;
+    width: 30px;
+    height: 3px;
+    position: relative;
+    transition: background 10ms 200ms ease;
+    transform: translateY(20px);
+  }
+  .menu-icon .hamburger:before, .menu-icon .hamburger:after {
+    transition: top 200ms 250ms ease, transform 200ms 50ms ease;
+    position: absolute;
+    background: black;
+    width: 30px;
+    height: 3px;
+    content: "";
+  }
+  .menu-icon .hamburger:before {
+    top: -10px;
+  }
+  .menu-icon .hamburger:after {
+    top: 10px;
+  }
+  
+  #menu-toggle:checked ~ .menu-icon .hamburger {
+    background: transparent;
+  }
+  #menu-toggle:checked ~ .menu-icon .hamburger:after, #menu-toggle:checked ~ .menu-icon .hamburger:before {
+    transition: top 200ms 50ms ease, transform 200ms 350ms ease;
+    top: 0;
+  }
+  #menu-toggle:checked ~ .menu-icon .hamburger:before {
+    transform: rotate(45deg);
+  }
+  #menu-toggle:checked ~ .menu-icon .hamburger:after {
+    transform: rotate(-45deg);
+  }
+
+  nav ul li {
+    margin: 15px 0;
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    font-size: 20px;
+    width: 100%;
+  }
+
+  /* メニューが開いたとき */
+  #menu-toggle:checked+.menu-icon+.overlay {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  #menu-toggle:checked+.menu-icon+.overlay+ul {
+    right: 0;
+  }
+}
+
+/* メニューオープン中に body に追加されるクラス */
+.no-scroll {
+  overflow: hidden;
+  height: 100vh; /* iOS対策 */
+}
+```
+
+以下のサイトを参考にさせていただきました。
+
+{{< linkcard "https://photopizza.design/css_hamburger_menu/" >}}
+
+## おわりに
+レスポンシブ対応もできてばっちりです。そろそろデザインを凝っていきたいです。
