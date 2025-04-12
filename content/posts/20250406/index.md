@@ -184,3 +184,5 @@ Hugoにおける`robots.txt`の扱いについて、以下のページに書か�
 {{< linkcard "https://gohugo.io/templates/robots/" >}}
 
 ひとまず、`hugo.toml`に対して`enableRobotsTXT = true`と書き込むことで全てのクローラを許可するテンプレート(`User-agent: *`)が適用されます。
+
+テンプレートの`hugo.toml`に書いても反映されないみたいなので注意です。
