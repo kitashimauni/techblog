@@ -1,18 +1,24 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format "2006/01/02" }}
-  <div>投稿日
-    <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-    {{ if ne .Lastmod .Date }}
-      {{ $updateDate := .Lastmod | time.Format "2006/01/02" }}
-      <br>
-      (最終更新:<time datetime="{{ $dateMachine }}">{{ $updateDate }}</time>)
-    {{ end }}
-    <br>
-    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <div class="title_container">
+    <h1>{{ .Title }}</h1>
   </div>
 
-  {{ .Content }}
+  <div class="meta_container">
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+    {{ $dateHuman := .Date | time.Format "2006/01/02" }}
+    <div>投稿日
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+      {{ if ne .Lastmod .Date }}
+        {{ $updateDate := .Lastmod | time.Format "2006/01/02" }}
+        <br>
+        (最終更新:<time datetime="{{ $dateMachine }}">{{ $updateDate }}</time>)
+      {{ end }}
+      <br>
+      {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+    </div>
+  </div>
+  
+  <div class="content_container">
+    {{ .Content }}
+  </div>
 {{ end }}

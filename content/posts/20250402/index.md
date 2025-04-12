@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 そのうえで、`assets/css/main.css`を以下のように書き換えます。
 
-```css
+```css {name="assets/css/main.css"}
 /* ハンバーガーメニュー */
 .menu-icon {
   display: none;

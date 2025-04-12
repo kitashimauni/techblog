@@ -19,7 +19,7 @@
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ .Summary }}">
 <!-- <meta property="og:image" content="https://example.com/image.jpg"> --> <!-- TODO: アイコン画像の追加  -->
-<meta property="og:url" content="{{ urls.JoinPath site.BaseURL .RelPermalink }}">
+<meta property="og:url" content="{{ urls.JoinPath site.Home.Permalink .RelPermalink }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.Title }}">
 

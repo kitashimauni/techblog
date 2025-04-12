@@ -16,7 +16,7 @@ Renders a menu for the given menu ID.
     <label for="menu-toggle" class="menu-icon">
       <div class="hamburger"></div>
     </label>
-    <label for="menu-toggle" class="overlay"></label>
+    <label class="overlay"></label>
     <ul class="menu">
       {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
     </ul>
