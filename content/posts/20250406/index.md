@@ -1,7 +1,7 @@
 +++
 title = 'ブログ制作記 #9'
 date = '2025-04-06T22:46:47+09:00'
-draft = true
+draft = false
 summary = 'ブログ制作記 第9回'
 tags = ['Hugo', 'Web']
 +++
