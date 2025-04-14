@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ハンバーガーメニューを開いているときにスクロールを無効にする
 document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.getElementById('menu-toggle');
+  const overlay = document.getElementsByClassName('overlay')[0];
 
   menuToggle.addEventListener('change', function () {
     if (menuToggle.checked) {
@@ -49,5 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       document.body.classList.remove('no-scroll');
     }
+  });
+
+  overlay.addEventListener('click', function () {
+    menuToggle.checked = false;
   });
 });

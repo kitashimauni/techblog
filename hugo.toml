@@ -3,6 +3,7 @@ languageCode = 'ja-jp'
 title = 'テック島開拓記'
 theme = 'my-theme'
 pagenate = 10
+enableRobotsTXT = true
 
 [params]
 titleImagePath = 'images/title.png'

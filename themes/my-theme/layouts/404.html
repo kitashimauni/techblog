@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <h1>指定されたページがありません</h1>
+  <p>The page you requested cannot be found.</p>
+  <p>
+    <a href="{{ .Site.Home.RelPermalink }}">
+      ホームに戻る
+    </a>
+  </p>
+{{ end }}
