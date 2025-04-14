@@ -176,13 +176,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 {{< /details >}}
 
+### アイコンの同化対策
+ハンバーガーメニューのアイコンが黒い線を使っているため、背景にコードブロックなどがくると同化して見にくくなってしまいます。
+
+とりあえずの解決策として、ハンバーガーメニューのアイコンの後ろを半透明にします。以下をハンバーガーメニューに当たっているクラス(`.menu-icon`)に指定します。
+
+```css
+.menu-icon{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+```
+
 ## robots.txtを追加する
-現状では`robots.txt`がありません。
+現状では`robots.txt`がありません。クロールを禁止すべきページもないのであまり影響はないと思いますが、一応追加しておきます。
 
 Hugoにおける`robots.txt`の扱いについて、以下のページに書かれています。
 
 {{< linkcard "https://gohugo.io/templates/robots/" >}}
 
-ひとまず、`hugo.toml`に対して`enableRobotsTXT = true`と書き込むことで全てのクローラを許可するテンプレート(`User-agent: *`)が適用されます。
+ひとまず、`hugo.toml`に対して以下を書き込むことで全てのクローラを許可するテンプレート(`User-agent: *`)が適用されます。
 
-テンプレートの`hugo.toml`に書いても反映されないみたいなので注意です。
+```toml {name="hugo.toml"}
+enableRobotsTXT = true
+```
+
+テンプレートの`hugo.toml`ではなくプロジェクト直下の`hugo.toml`に書く必要があるようです。
+
+## 404ページを作る
+404ページがなかったので404ページを作ります。`layouts/404.html`に以下のように書き込みます。
+
+```html {name="layouts/404.html"}
+{{ define "main" }}
+  <h1>指定されたページがありません</h1>
+  <p>The page you requested cannot be found.</p>
+  <p>
+    <a href="{{ .Site.Home.RelPermalink }}">
+      ホームに戻る
+    </a>
+  </p>
+{{ end }}
+```
+
+これで、存在しないページを開いたときに自動的にこの内容が返されるようになります。
+
+## おわりに
+投稿日はこのページを最初に作成した日時になっているため、公開されるまでにラグがあります。公開日に合わせたほうがいいのか悩みどころです。

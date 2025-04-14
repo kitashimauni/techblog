@@ -110,6 +110,7 @@ nav a:hover {
     height: 33px;
     padding: 5px;
     z-index: 1001;
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   /* メニューの初期状態: 画面外に隠す */
