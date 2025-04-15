@@ -54,5 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   overlay.addEventListener('click', function () {
     menuToggle.checked = false;
+    document.body.classList.remove('no-scroll');
   });
 });
