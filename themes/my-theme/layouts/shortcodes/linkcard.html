@@ -35,19 +35,12 @@
     {{- end }}
 
     <!-- get image -->
+    {{ with resources.Get "images/noimage.png" }}
+      {{- $image = .RelPermalink }}
+    {{ end }}
     {{- $found := findRESubmatch `og:image["\'].*?content=["\'](.*?)["\']` $content 1 }}
     {{- range $found }}
       {{- $image = index . 1 }}
-    {{- end }}
-    {{- if eq $image "" }}
-      {{- $found := findRESubmatch `<img.*?src=["\'](.*?)["\']` $content 1 }}
-      {{- range $found }}
-        {{- $image = index . 1 }}
-      {{- end }}
-      {{- if eq (slicestr $image 0 1) "/" }}
-        {{- $host := urls.JoinPath "https://" $url.Hostname }}
-        {{- $image =  urls.JoinPath $host $image }}
-      {{- end }}
     {{- end }}
 
     <!-- get siteURL -->
