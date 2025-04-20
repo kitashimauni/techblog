@@ -1,5 +1,5 @@
 +++
-title = 'Agent Development Kitに触ってみる'
+title = 'Agent Development Kitに触ってみる #1'
 date = '2025-04-17T11:08:46+09:00'
 draft = false
 summary = '今話題のADKに触れてみます'
@@ -7,6 +7,8 @@ tags = ['ADK', 'マルチエージェントシステム']
 +++
 
 つい最近公開されたAgent Development Kitを試してみようと思います。
+
+この記事ではQuickstartとTutorialの2章までやっていきます。
 
 ## Quickstart
 まずは以下のQuickstartを試してみます。
@@ -256,6 +258,318 @@ except Exception as e:
 ```
 
 ## コードベースで対話する
-Quickstartでは、WebUIの機能によって(?)自動でSessionの管理などを行ってくれていたのですが、コードベースで書く場合はSessionや
+Quickstartでは、WebUIの機能によって(?)自動でSessionの管理などを行ってくれていたのですが、コードベースで書く場合はSessionやRunnerを自分で作成して管理します。
 
 ### Session
+各セッションにおける会話を管理し履歴や状態を保存することができます。
+
+セッションを扱うためには、`InMemorySessionService`を使います。以下の文でimportできます。
+
+```py
+from google.adk.sessions import InMemorySessionService
+```
+
+セッションは以下のようにして作成できます。
+
+```py
+session_service = InMemorySessionService()
+
+session = session_service.create_session(
+    app_name="weather_time_agent",
+    user_id="user_1",
+    session_id="session_1"
+)
+```
+
+チュートリアルに記載されている各引数は以下のようになっています。
+`app_name`: (必須)アプリケーションの名前
+`user_id`: (必須)ユーザーのID(文字列)
+`session_id`: セッションのID(文字列)
+
+### Runner
+Runnerはユーザ入力の受け取りやLLMやツールの呼び出し、セッションなどを管理します。
+
+Runnerを使うには以下の文でimportします。
+
+```py
+from google.adk.runners import Runner
+```
+
+Runnerは以下のようにして作成できます。
+
+```py
+runner = Runner(
+    agent=root_agent,
+    app_name="weather_time_agent",
+    session_service=session_service,
+)
+```
+
+チュートリアルに記載されている各引数は以下のようになっています。ここに書かれているのは全て必須です。
+`agent`: エージェント
+`app_name`: アプリケーション名
+`session_service`: セッションを管理するインスタンス(`InMemorySessionService`など)
+
+なぜSessionとRunnerの両方に`app_name`の引数があるのかはわかりませんが、チュートリアルでは同じ名前を入れていました。
+
+### エージェントと対話する
+ここまでの作業を基に、エージェントとやり取りをするためのヘルパー関数を定義します。非同期関数となっていますが、これはLLMや外部APIを叩く操作は時間がかかるためです。非同期関数にすることで他の処理をブロッキングすることなく処理することができます。
+
+```py
+import asyncio
+from google.genai import types
+
+async def call_agent_async(query: str):
+    """Sends a query to the agent and prints the final response."""
+    print(f"\n>>> User Query: {query}")
+
+    content = types.Content(role='user', parts=[types.Part(text=query)])
+
+    final_response_text = "Agent did not produce a final response." # Default
+
+    # 最終的な回答が得られるまで反復
+    async for event in runner.run_async(user_id="user_1", session_id="session_1", new_message=content):
+        # 以下をアンコメントすることで全てのログを出力可能
+        # print(f"  [Event] Author: {event.author}, Type: {type(event).__name__}, Final: {event.is_final_response()}, Content: {event.content}")
+
+        # is_final_response() で最後のレスポンスかを判定
+        if event.is_final_response():
+            if event.content and event.content.parts:
+                # 最初のpartに応答があると仮定
+                final_response_text = event.content.parts[0].text
+            elif event.actions and event.actions.escalate: # 応答を得られない場合
+                final_response_text = f"Agent escalated: {event.error_message or 'No specific message.'}"
+            break # 終了
+
+    print(f"<<< Agent Response: {final_response_text}")
+```
+
+上記の関数を実行する以下のプログラムを実行します。
+
+```py
+async def run_conversation():
+    await call_agent_async("What is the weather like in London?")
+    await call_agent_async("How about Paris?")
+    await call_agent_async("Tell me the weather in New York")
+
+await run_conversation()
+```
+
+実行結果は以下のようになりました。しっかり使えていそうです。
+
+```text
+>>> User Query: What is the weather like in London?
+<<< Agent Response: I am sorry, I cannot get the weather information for London. The weather information for 'London' is not available.
+
+>>> User Query: How about Paris?
+<<< Agent Response: I am sorry, I cannot get the weather information for Paris. The weather information for 'Paris' is not available.
+
+>>> User Query: Tell me the weather in New York
+<<< Agent Response: OK. The weather in New York is sunny with a temperature of 25 degrees Celsius (41 degrees Fahrenheit).
+```
+
+## コードベースでの対話(まとめ)
+ここまで、コードベースでの対話方法を説明していきました。ここまでで、ツールを使うことのできるLLMエージェントを作成できるようになりました。
+
+次回の記事では、エージェントのチームを作る方法などを見ていきます。
+
+一連のプログラムは以下を参照してください。
+
+{{< details summary="一連のプログラム" >}}
+Jupyterなどのノートブックで実行することを想定しています。
+
+### APIキーのロード
+必要なAPIキーと環境変数名などは[このページ](https://docs.litellm.ai/docs/providers)から調べてください。
+
+Gemini(Google AI Studio)の場合は`GEMINI_API_KEY`が必要です。Quickstartにおいて、`GOOGLE_API_KEY`に書いたAPIキーを以下のように書いてください。
+
+```text {name=".env"}
+GEMINI_API_KEY = {APIキー}
+```
+
+以下のコードで`.env`を読み込みます。
+
+```py
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+### エージェントが使うツールの定義
+以下のコードでエージェントが使うツールを定義します。この部分はQuickstartと同じです。
+
+```py
+import datetime
+from zoneinfo import ZoneInfo
+
+def get_weather(city: str) -> dict:
+    """Retrieves the current weather report for a specified city.
+
+    Args:
+        city (str): The name of the city for which to retrieve the weather report.
+
+    Returns:
+        dict: status and result or error msg.
+    """
+    if city.lower() == "new york":
+        return {
+            "status": "success",
+            "report": (
+                "The weather in New York is sunny with a temperature of 25 degrees"
+                " Celsius (41 degrees Fahrenheit)."
+            ),
+        }
+    else:
+        return {
+            "status": "error",
+            "error_message": f"Weather information for '{city}' is not available.",
+        }
+
+
+def get_current_time(city: str) -> dict:
+    """Returns the current time in a specified city.
+
+    Args:
+        city (str): The name of the city for which to retrieve the current time.
+
+    Returns:
+        dict: status and result or error msg.
+    """
+
+    if city.lower() == "new york":
+        tz_identifier = "America/New_York"
+    else:
+        return {
+            "status": "error",
+            "error_message": (
+                f"Sorry, I don't have timezone information for {city}."
+            ),
+        }
+
+    tz = ZoneInfo(tz_identifier)
+    now = datetime.datetime.now(tz)
+    report = (
+        f'The current time in {city} is {now.strftime("%Y-%m-%d %H:%M:%S %Z%z")}'
+    )
+    return {"status": "success", "report": report}
+```
+
+### エージェントの定義
+LiteLLMを使ってQuickstartと同じようなエージェントを定義します。
+
+```py
+from google.adk.agents import Agent
+from google.adk.models.lite_llm import LiteLlm
+
+try:
+    root_agent = Agent(
+        name="weather_time_agent",
+        model=LiteLlm("gemini/gemini-2.0-flash"),
+        description=(
+            "Agent to answer questions about the time and weather in a city."
+        ),
+        instruction=(
+            "You are a helpful agent who can answer user questions about the time and weather in a city."
+        ),
+        tools=[get_weather, get_current_time],
+    )
+except Exception as e:
+    print(f"Counld not create Agent. Error: {e}")
+```
+
+### セッションサービスの作成
+セッションを管理するために`InMemorySessionService`のインスタンスを作ります。
+
+変数`session`は今後使いませんが、user_idとsession_idで紐づけてエージェントを実行するため、`session_service.create_session`の実行は必須です。
+
+```py
+from google.adk.sessions import InMemorySessionService
+
+session_service = InMemorySessionService()
+
+session = session_service.create_session(
+    app_name="weather_time_agent",
+    user_id="user_1",
+    session_id="session_1"
+)
+```
+
+### Runnerの作成
+以下のコードでRunnerを作成します。
+
+```py
+from google.adk.runners import Runner
+
+runner = Runner(
+    agent=root_agent,
+    app_name="weather_time_agent",
+    session_service=session_service,
+)
+```
+
+### ヘルパー関数の定義
+クエリを与えてエージェントを実行するためのヘルパー関数を以下のように定義します。
+
+```py
+import asyncio
+from google.genai import types
+
+async def call_agent_async(query: str):
+    """Sends a query to the agent and prints the final response."""
+    print(f"\n>>> User Query: {query}")
+
+    # Prepare the user's message in ADK format
+    content = types.Content(role='user', parts=[types.Part(text=query)])
+
+    final_response_text = "Agent did not produce a final response." # Default
+
+    # Key Concept: run_async executes the agent logic and yields Events.
+    # We iterate through events to find the final answer.
+    async for event in runner.run_async(user_id="user_1", session_id="session_1", new_message=content):
+        # You can uncomment the line below to see *all* events during execution
+        # print(f"  [Event] Author: {event.author}, Type: {type(event).__name__}, Final: {event.is_final_response()}, Content: {event.content}")
+
+        # Key Concept: is_final_response() marks the concluding message for the turn.
+        if event.is_final_response():
+            if event.content and event.content.parts:
+                # Assuming text response in the first part
+                final_response_text = event.content.parts[0].text
+            elif event.actions and event.actions.escalate: # Handle potential errors/escalations
+                final_response_text = f"Agent escalated: {event.error_message or 'No specific message.'}"
+            # Add more checks here if needed (e.g., specific error codes)
+            break # Stop processing events once the final response is found
+
+    print(f"<<< Agent Response: {final_response_text}")
+```
+
+### エージェントの実行
+以下のコードでエージェントを実行します。
+
+```py
+async def run_conversation():
+    await call_agent_async("What is the weather like in London?")
+    await call_agent_async("How about Paris?") # Expecting the tool's error message
+    await call_agent_async("Tell me the weather in New York")
+    await call_agent_async("What time is it in New York?")
+
+# Execute the conversation using await in an async context (like Colab/Jupyter)
+await run_conversation()
+```
+
+一連のコードを実行して得られる結果は以下のようになります。
+
+```text
+>>> User Query: What is the weather like in London?
+<<< Agent Response: I am sorry, I cannot get the weather information for London. There was an error.
+
+>>> User Query: How about Paris?
+<<< Agent Response: I am sorry, I cannot get the weather information for Paris. There was an error.
+
+>>> User Query: Tell me the weather in New York
+<<< Agent Response: OK. The weather in New York is sunny with a temperature of 25 degrees Celsius (41 degrees Fahrenheit).
+
+
+>>> User Query: What time is it in New York?
+<<< Agent Response: The current time in New York is 2025-04-20 11:30:19 EDT-0400.
+```
+
+{{< /details >}}
