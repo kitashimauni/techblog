@@ -1,0 +1,3 @@
+{{- $rel_url := .Get 0 }}
+{{- $url := urls.JoinPath site.Home.Permalink $rel_url }}
+{{- partial "linkcards.html" (dict "url" $url) }}
