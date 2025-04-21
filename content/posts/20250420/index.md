@@ -31,3 +31,62 @@ TODO: ここに書く
 これで画像がないときは以下のように「NO IMAGE」と表示されるようになりました。
 
 {{< figure src="src/no_image_after.png" alt="画像がないときの表示(変更後)" >}}
+
+## OGPタグに画像を指定する
+タイトル画像ができたのでこれをOGPタグやTwitterタグに指定します。
+
+以下を`layouts/partials/head.html`に追記します。
+
+```html {name="layouts/partials/head.html (追記)"}
+{{- with resources.Get (.Site.Param "titleImagePath") }}
+  <meta property="og:image" content="{{ .RelPermalink }}">
+{{- end }}
+
+{{- with resources.Get (.Site.Param "titleImagePath") }}
+  <meta name="twitter:image" content="{{ .RelPermalink }}">
+{{- end }}
+```
+
+### リンクカードを内部リンクに対応する
+現状ではshortcodeとして作成した`linkcard`は外部リンクとして指定することはできますが、同じようにして以下のように内部リンクを指定できるとうれしいと感じました。
+
+```text
+{{</* internallinkcard "posts/20250420" */>}}
+```
+
+そこで、内部リンク用に`internallinkcard`というshortcodeを作成します。`linkcard`との違いを比べると`site.Home.Permalink`が先頭についているかどうか以外の違いがありません。
+
+`internallinkcard`の中で`linkcard`を呼び出せればよいのですが、shortcodeの中でshortcodeを呼び出すことは難しいようです。解決策として、今の`shortcodes/linkcard.html`を`partials/linkcard.html`に移植し、`shortcodes/linkcard.html`と`shortcodes/internallinkcard.html`から`partials/linkcard.html`を呼び出すという構造に変更します。
+
+3ファイルを以下のように変更します。partial呼び出しの引数には`dict`を使います。
+
+```html {name="layouts/shortcodes/linkcard.html"}
+{{- partial "linkcards.html" (dict "url" (.Get 0)) }}
+```
+
+`internallinkcard`では`site.Home.Permalink`を結合してpartialを呼び出します。
+
+```html {name="layouts/shortcodes/internallinkcard.html"}
+{{- $rel_url := .Get 0 }}
+{{- $url := urls.JoinPath site.Home.Permalink $rel_url }}
+{{- partial "linkcards.html" (dict "url" $url) }}
+```
+
+`layouts/shortcodes/linkcard.html`から`layouts/partials/linkcard.html`へコピー後の変更は先頭の一行のみです。
+
+```html {name="layouts/partials/linkcard.html (変更部分)"}
+{{- $url := urls.Parse .url }}
+```
+
+これで内部リンクを指定してlinkcardを表示することができるようになりました。
+
+以下はサンプルです。
+
+````text
+{{</* internallinkcard "posts/20250420" */>}}
+````
+
+{{< internallinkcard "posts/20250420" >}}
+
+<!-- TODO: codeの装飾 -->
+<!-- TODO: blockquoteの有効化 -->
