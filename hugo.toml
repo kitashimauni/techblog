@@ -7,3 +7,9 @@ enableRobotsTXT = true
 
 [params]
 titleImagePath = 'images/title.png'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true

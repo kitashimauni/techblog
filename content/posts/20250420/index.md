@@ -48,6 +48,9 @@ TODO: ここに書く
 ```
 
 ### リンクカードを内部リンクに対応する
+> [!CAUTION]
+> 循環参照の問題を解決できなかったため一旦諦めます。
+
 現状ではshortcodeとして作成した`linkcard`は外部リンクとして指定することはできますが、同じようにして以下のように内部リンクを指定できるとうれしいと感じました。
 
 ```text
@@ -86,7 +89,7 @@ TODO: ここに書く
 {{</* internallinkcard "posts/20250420" */>}}
 ````
 
-{{< internallinkcard "posts/20250420" >}}
+<!-- {{< internallinkcard "posts/20250420" >}} -->
 
 <!-- TODO: codeの装飾 -->
 <!-- TODO: blockquoteの有効化 -->
