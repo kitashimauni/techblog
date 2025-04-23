@@ -3,7 +3,7 @@
 {{- $title := "" }}
 {{- $description := "" }}
 {{- $image := .imagePath }}
-{{- $siteURL := .BaseURL }}
+{{- $siteURL := (urls.Parse .baseURL).Hostname }}
 {{- with $page }}
     {{- $url = .RelPermalink }}
     {{- $title = .Title }}
