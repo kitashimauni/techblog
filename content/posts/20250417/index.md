@@ -22,6 +22,7 @@ uvを使います。簡単に環境構築ができるので便利です。
 
 ```bash
 uv init adk_test -p 3.11
+cd adk_test
 uv add google-adk
 ```
 
@@ -377,6 +378,8 @@ await run_conversation()
 
 {{< details summary="一連のプログラム" >}}
 Jupyterなどのノートブックで実行することを想定しています。
+
+同階層にノートブックファイルと`.env`を置いてください。
 
 ### APIキーのロード
 必要なAPIキーと環境変数名などは[このページ](https://docs.litellm.ai/docs/providers)から調べてください。

@@ -1,0 +1,6 @@
+{{- $url := .Get 0}}
+{{- $image := "" }}
+{{- with resources.Get (.Site.Param "titleImagePath") }}
+    {{- $image = .RelPermalink }}
+{{- end}}
+{{- partial "internallinkcard.html" (dict "url" $url "baseURL" .Site.BaseURL "page" (.Site.GetPage $url) "imagePath" $image) }}

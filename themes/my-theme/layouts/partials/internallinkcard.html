@@ -1,0 +1,24 @@
+{{- $url := urls.Parse .url }}
+{{- $page := .page }}
+{{- $title := "" }}
+{{- $description := "" }}
+{{- $image := .imagePath }}
+{{- $siteURL := (urls.Parse .baseURL).Hostname }}
+{{- with $page }}
+    {{- $url = .RelPermalink }}
+    {{- $title = .Title }}
+    {{- $description = .Summary }}
+{{- end }}
+
+<a href="{{ $url }}" target="_blank" class="link-card">
+  <div class="link-card__content">
+    <p class="link-card__title">{{ $title }}</p>
+    <p class="link-card__description">{{ $description }}</p>
+    <p class="link-card__url">{{ $siteURL }}</p>
+  </div>
+  {{ if ne $image "" }}
+    <div class="link-card__image">
+      <img src="{{ $image }}" alt="サイトの画像">
+    </div>
+  {{ end }}
+</a>
