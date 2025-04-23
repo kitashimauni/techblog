@@ -623,22 +623,22 @@ blockquote.alert {
 /* 各種アラートタイプ */
 blockquote.alert-caution {
   background-color: #fff3cd;
-  border-left-color: #ffe38d;
+  border-left-color: #f5d880;
 }
 
 blockquote.alert-important {
   background-color: #d1ecf1;
-  border-left-color: #9be5f1;
+  border-left-color: #8fdde9;
 }
 
 blockquote.alert-note {
   background-color: #e2e3e5;
-  border-left-color: #b7c9e3;
+  border-left-color: #b2c7e4;
 }
 
 blockquote.alert-tip {
   background-color: #d4edda;
-  border-left-color: #9fe9b0;
+  border-left-color: #99eaac;
 }
 
 blockquote.alert-warning {
