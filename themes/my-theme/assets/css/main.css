@@ -656,3 +656,72 @@ blockquote.alert-warning {
   line-height: 1.6;
   border-radius: 5px;
 }
+
+/* リンク */
+.content_container p > a {
+  color: #0077cc;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.content_container p > a:hover {
+  color: #005fa3;
+  text-decoration-color: #005fa3;
+}
+
+/* details全体にスタイルを当てる */
+.content_container details {
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border: 1px solid #cddfea;
+  border-radius: 0.5em;
+  background-color: #f9fcff;
+  transition: background-color 0.3s ease;
+  overflow: hidden;
+}
+
+/* summary部分 */
+.content_container summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #336699;
+  padding: 0.5em 0;
+  list-style: none; /* デフォルトの▶を消す場合 */
+  position: relative;
+}
+
+/* summaryのhover */
+.content_container summary:hover {
+  color: #224466;
+}
+
+/* ▶マークを自作する */
+.content_container summary::before {
+  content: "▶";
+  top: 50%;
+  padding-right: 5pt;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  transition: transform 0.2s ease;
+}
+
+/* detailsが開いたときのマークを変える */
+.content_container details[open] summary::before {
+  content: "▼";
+}
+
+/* detailsが開いた時、背景を少し濃くする */
+.content_container details[open] {
+  background-color: #eef6fb;
+}
+
+.related-articles h2 {
+  display: inline-block;
+  font-size: 1.2em;
+  background-color: #eef6fb;
+  color: #336699;
+  padding: 0.3em 0.8em;
+  border-radius: 9999px;
+  margin-bottom: 1em;
+}

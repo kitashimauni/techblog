@@ -21,4 +21,16 @@
   <div class="content_container">
     {{ .Content }}
   </div>
+
+  {{ with site.RegularPages.Related . | first 6 }}
+    <hr class="section-divider">
+    {{ if ne .Len 0 }}
+      <div class="related_posts_container">
+        <div class="related-articles">
+          <h2>関連記事</h2>
+        </div>
+        {{ partial "pagelist.html" (dict "pages" .) }}
+      </div>
+    {{ end }}
+  {{ end }}
 {{ end }}
