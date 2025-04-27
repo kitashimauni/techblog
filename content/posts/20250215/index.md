@@ -1,7 +1,7 @@
 +++
 title = 'WSLにArchLinuxを入れてみる'
 date = '2025-02-15T00:29:15+09:00'
-lastmod = '2025-02-20T00:29:15+09:00'
+lastmod = '2025-04-27T00:29:15+09:00'
 draft = false
 summary = 'WSLにArchLinuxを入れる記事'
 tags = ['WSL', 'Arch']
@@ -10,6 +10,16 @@ tags = ['WSL', 'Arch']
 ArchLinuxをWSLに入れてみようと思います。
 
 ## ArchLinuxをダウンロードしてWSLに登録する
+
+> [!CAUTION]
+> この方法はWSLが公式に提供するArchLinuxを使用しない方法です。
+> 
+> 2025年4月にWSLの下記コマンドだけでArchLinuxを入れることができるようになりました。
+> ```bash
+> wsl --list -o # 使用可能なディストリビューション一覧
+> wsl --install archlinux --name {名前} # ArchLinuxをインストール
+> wsl -d {名前} # ディストリビューションを指定して起動
+> ```
 
 [ArchWiki](https://wiki.archlinux.jp/index.php/WSL_%E3%81%AB%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)に一応書かれてはいるものの、情報が古いのであまり参考にならなそうです。
 
