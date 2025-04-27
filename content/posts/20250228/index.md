@@ -220,12 +220,14 @@ git config --global init.defaultBranch main
 #### Extenject
 依存性注入に使います。
 
-まれに、Extenjectが依存するパッケージがデフォルトで入っていないことがあるので、エラー文を見てPackage Managerから不足しているものをインストールしてください。
-(今回はAddressablesが入っていませんでした。[Window] > [Package Manager]で左側からUnity Registryを選択し、Addressablesを探してInstallを押します。)
-
 ```text
 https://github.com/Mathijs-Bakker/Extenject.git?path=UnityProject/Assets/Plugins/Zenject/Source
 ```
+
+> [!TIP]
+> まれに、Extenjectが依存するパッケージがデフォルトで入っていないことがあるので、エラー文を見てPackage Managerから不足しているものをインストールしてください。
+> 
+> (今回はAddressablesが入っていませんでした。[Window] > [Package Manager]で左側からUnity Registryを選択し、Addressablesを探してInstallを押します。)
 
 #### UniTask
 非同期処理に使います。
@@ -234,10 +236,13 @@ https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask
 ```
 
 #### R3
-イベント関係で便利なライブラリです。UniTaskとの相性も良い。後述のNugetForUnityでR3のコア部分を別途インストールする必要があります。
+イベント関係で便利なライブラリ。UniTaskとの相性も良いです。
 ```text
 https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity
 ```
+
+> [!CAUTION]
+> 後述のNugetForUnityでR3のコア部分を別途インストールする必要があります。
 
 #### Nuget For Unity
 UnityでNugetが使えるようになります。
@@ -253,7 +258,8 @@ NugetForUnityを使う場合は、`.gitignore`に以下を追記しておきま�
 /Assets/Packages.meta
 ```
 
-注: Nugetのパッケージは初回起動時に解決されないため、このプロジェクトのリポジトリをクローンして最初に起動した際にエラーが出ることがありますが、この場合はIngoreしてからエディタを閉じて開きなおしてください。
+> [!CAUTION]
+> Nugetのパッケージは初回起動時に解決されないため、このプロジェクトのリポジトリをクローンして最初に起動した際にエラーが出ることがありますが、この場合はIngoreしてからエディタを閉じて開きなおしてください。
 
 #### その他
 上記の他にも、人型の3Dモデルを扱うのに便利なVRMやLiltoonなど必要に応じて入れましょう。ここで入れなくても、必要になったときに入れれば問題ありません。
