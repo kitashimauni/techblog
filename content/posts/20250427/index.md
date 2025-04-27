@@ -77,7 +77,9 @@ shortcodeで`details`を使うと装飾がなくてさみしいので`details`�
 ```
 
 ## 関連記事の表示
-Hugoについて調べていたとき、`site.RegularPages.Related`なるものがあるのを見つけました。どうやら関連記事を簡単に取得できるようです。
+HUGOについて調べていたとき、`site.RegularPages.Related`なるものがあるのを見つけました。どうやら関連記事を簡単に取得できるようです。
+
+{{< linkcard "https://gohugo.io/content-management/related-content/" >}}
 
 `layouts/_default/single.html`を以下のように書き換えます。コンテンツの下部に関連記事を表示する部分を作りました。
 
