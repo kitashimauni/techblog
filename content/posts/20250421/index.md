@@ -339,8 +339,6 @@ load_dotenv()
 これまでと同様にセッションを作りますが、`state`を渡していることに注目してください。
 
 ```py
-# @title 1. Initialize New Session Service and State
-
 from google.adk.sessions import InMemorySessionService
 
 session_service_stateful = InMemorySessionService()
