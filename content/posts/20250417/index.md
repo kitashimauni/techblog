@@ -148,7 +148,7 @@ Quickstartは以上で終了です。コピー&ペーストだけでニューヨ
 ## 少し深掘り
 以下のチュートリアルを見ながらQuickstartで何をしていたのかを見ていきます。
 
-{{< linkcard "https://google.github.io/adk-docs/get-started/tutorial/" >}}
+{{< linkcard "https://google.github.io/adk-docs/tutorials/agent-team/" >}}
 
 ### ツールの定義
 例として、agent.pyの中では以下の部分で天気情報を取得するツールの定義を行っています。
