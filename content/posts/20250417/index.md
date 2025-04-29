@@ -1,5 +1,5 @@
 +++
-title = 'Agent Development Kitに触ってみる #1'
+title = 'Agent Development Kitを触ってみる #1'
 date = '2025-04-17T11:08:46+09:00'
 draft = false
 summary = '今話題のADKに触れてみます'
@@ -188,7 +188,7 @@ def get_weather(city: str) -> dict:
 LLMはこの文字列を基にツールを使用するため、適切にツールの説明を記述しなければなりません。
 
 ### エージェントの定義
-エージェントの定義をします。エージェントのインスタンスは`from google.adk.agents import Agent`で作成できます。
+エージェントの定義をします。エージェントのインスタンスを作成するには`from google.adk.agents import Agent`で`Agent`をインポートします。
 
 Quickstartでエージェントの定義に該当する部分は以下の部分です。
 
@@ -209,7 +209,7 @@ root_agent = Agent(
 重要な引数は以下の通りです。
 
 - `name`: エージェントの一意な名前
-- `model`: 使用するLLM
+- `model`: 使用するLLM(`"gemini-2.0-flash"`は少し特殊な指定方法)
 - `description`: エージェントの説明
 - `instruction`: LLMの行動方法や人格、目標、割り当てられたリソース、与えられたツールをどのように活用するかの説明
 - `tools`: エージェントが実際に使用できるPythonの関数のリスト
@@ -221,7 +221,7 @@ root_agent = Agent(
 ### LiteLlm
 ADKに統合されているLiteLLMを使うことで、様々なLLMをベースとしたAgentを定義できます。
 
-`LiteLLM`を使うには以下のコマンドでインストールします。
+`LiteLLM`を使う前に以下のコマンドでインストールします。
 
 ```bash
 uv add litellm
@@ -314,7 +314,7 @@ runner = Runner(
 なぜSessionとRunnerの両方に`app_name`の引数があるのかはわかりませんが、チュートリアルでは同じ名前を入れていました。
 
 ### エージェントと対話する
-ここまでの作業を基に、エージェントとやり取りをするためのヘルパー関数を定義します。非同期関数となっていますが、これはLLMや外部APIを叩く操作は時間がかかるためです。非同期関数にすることで他の処理をブロッキングすることなく処理することができます。
+ここまでの作業を基に、エージェントとやり取りをするためのヘルパー関数を定義します。非同期関数となっていますが、これはLLMなどの外部APIを叩く操作に時間がかかるためです。非同期関数にすることで他の処理をブロッキングすることなく処理することができます。
 
 ```py
 import asyncio
@@ -558,7 +558,9 @@ async def run_conversation():
 await run_conversation()
 ```
 
-一連のコードを実行して得られる結果は以下のようになります。
+一連のコードを実行して得られる結果は以下のようになりました。
+
+ニューヨークの天気や時間を正しく回答していて、ツールによって情報を得られない場合はその旨を表示しています。
 
 ```text
 >>> User Query: What is the weather like in London?

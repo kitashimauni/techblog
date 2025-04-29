@@ -189,7 +189,7 @@ HUGOについて調べていたとき、`site.RegularPages.Related`なるもの�
 <meta name="description" content="初投稿記事です">
 ```
 
-プロジェクト直下の`hugo.toml`に以下を追記します。デフォルトを貼り付けたうえで`minifyOutput = true`としました。これで対応しているファイルは全てminifyされます。
+プロジェクト直下の`hugo.toml`に以下を追記します。[デフォルトの設定](https://gohugo.io/configuration/minify/)を貼り付けたうえで`minifyOutput = true`としました。これで対応しているファイルは全てminifyされます。
 
 ```toml {name="hugo.toml (追記)"}
 [minify]
@@ -236,10 +236,12 @@ minifyを設定した後、改行の目立っていたhtmlは次のようにな�
 <!doctype html><html lang=ja-jp dir=ltr><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=utf-8><meta name=viewport content="width=device-width"><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content="初投稿記事です"><meta name=robots content="index, follow"><meta name=generator content="Hugo"><meta property="og:title" content="初投稿 | テック島開拓記"><meta property="og:description" content="初投稿記事です"><meta property="og:image" content="/images/title.png"><meta property="og:url" content="http://localhost:1313/posts/20250204-1/"><meta property="og:type" content="website"><meta property="og:site_name" content="テック島開拓記"><meta name=twitter:card content="summary"><meta name=twitter:title content="初投稿 | テック島開拓記"><meta name=twitter:description content="初投稿記事です"><meta name=twitter:image content="/images/title.png"><title>初投稿 | テック島開拓記</title>
 ```
 
-minifyについては`--minify`オプションを付けることでも有効化できるようです。
+minifyについてはビルドの際に`--minify`オプションを付けることでも有効化できるようです。
 
 ## 画像をwebpへ変換
 現状では画像に対して何も処理しておらず、記事中ではpng画像が多いです。しかし、png画像はサイズが大きくなりがちで100KBを超えるものもあります。
+
+画像は圧縮率の高いwebpに変換するのが良いそうなので、画像をなるべくwebpに置き換えます。
 
 HUGOでは`RESOURCE.Resize`というメソッドが提供されており、これによってフォーマットの変換が可能です。
 
@@ -247,7 +249,7 @@ HUGOでは`RESOURCE.Resize`というメソッドが提供されており、こ�
 
 今回は記事中の画像埋め込みに使用しているビルトインのshortcodeである`figure`に変更を加えます。
 
-以下からコードを取得し、以下のように書き換えます。
+以下からコードを取得して`layouts/shortcodes/figure.html`に貼り付け、以下のように書き換えます。
 
 {{< linkcard "https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_shortcodes/figure.html" >}}
 
@@ -301,4 +303,4 @@ HUGOでは`RESOURCE.Resize`というメソッドが提供されており、こ�
 
 また、以前から検討していた検索機能については、全文検索の実装自体は可能なものの、クライアント側だけで完結する実装は処理速度的に厳しいという結論に至ったため後回しにします。
 
-今後も欲しくなった機能を追加していきます。デザインも方向性を定めたいです。
+今後も欲しくなった機能を追加していきます。デザインの方向性も定めたいです。

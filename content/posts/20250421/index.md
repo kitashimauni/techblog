@@ -1,5 +1,5 @@
 +++
-title = 'Agent Development Kitに触ってみる #2'
+title = 'Agent Development Kitを触ってみる #2'
 date = '2025-04-21T22:39:39+09:00'
 draft = false
 summary = 'エージェントチームなどを実装します'

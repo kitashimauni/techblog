@@ -1,5 +1,5 @@
 +++
-title = 'Agent Development Kitに触ってみる #3'
+title = 'Agent Development Kitを触ってみる #3'
 date = '2025-04-28T16:25:02+09:00'
 draft = false
 summary = 'before_model_callbackなどを実装します'
@@ -14,7 +14,7 @@ tags = ['ADK', 'マルチエージェントシステム']
 {{< internallinkcard "/posts/20250421" >}}
 
 ## before_model_callbackを使う
-`before_model_callback`はエージェントがリクエストをLLMに送信する前に実行する関数です。以下のような目的で使うことができます。
+`before_model_callback`はエージェントがリクエストをLLMに送信する前に実行される関数です。以下のような目的で使うことができます。
 
 - 入力の検証/フィルタリング: ユーザーの入力が基準を満たしているか、または許可されていないコンテンツ(個人情報やキーワードなど)が含まれているかどうかの確認
 - ガードレール: 有害、トピック外、またはポリシー違反のリクエストがLLMによって処理されることを防止
@@ -219,7 +219,7 @@ print("✅ block_keyword_guardrail function defined.")
 ```
 
 ### エージェントの作成
-`before_model_callback`を渡してエージェントを定義します。
+`root_agent_model_guardrail`を定義する際、`引数`before_model_callback`に`block_keyword_guardrail`を渡してエージェントを定義します。
 
 ```py
 from google.adk.agents import Agent
@@ -399,7 +399,7 @@ Temperature Unit: Celsius
 - 動的な引数の変更: ツールを実行する前に、セッション状態またはその他のコンテキスト情報に基づいた引数の調整
 
 > [!NOTE]
-> 実装例のみを取り上げます
+> 実装例の一部のみを取り上げます
 
 ### before_tool_callbackに使う関数の定義
 以下のようにして書くことができます。以下ではターゲットとなるツール名`get_weather_stateful`において、引数の都市名が`paris`の場合はブロックします。
@@ -476,6 +476,6 @@ root_agent_tool_guardrail = Agent(
 ## おわりに
 今回は`before_model_callback`や`before_tool_callback`の実装を行いました。
 
-`before_tool_callback`に関しては、自分でツールを定義した場合はその中で同様の処理を行えるので、外部のライブラリで定義されているツールを使う際などに使うのかなと感じました。
+`before_tool_callback`に関しては、自分でツールを定義した場合はその中で同様の処理を書くことができるので、書き換えがしずらい外部のライブラリなどで定義されているツールを使う際などに使うのかなと感じました。
 
 次は、実際に使えるツールを持ったエージェントを定義して使ってみたいです。
