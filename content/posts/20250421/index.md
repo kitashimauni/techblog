@@ -8,7 +8,7 @@ tags = ['ADK', 'マルチエージェントシステム']
 
 今回はADKのチュートリアルの3章以降をやっていきます。
 
-{{< linkcard "https://google.github.io/adk-docs/get-started/tutorial/" >}}
+{{< linkcard "https://google.github.io/adk-docs/tutorials/agent-team/" >}}
 
 前回の記事はこちら。
 

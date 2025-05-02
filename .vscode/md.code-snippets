@@ -1,0 +1,26 @@
+{
+  "figure": {
+    "scope": "markdown",
+    "prefix": "figure",
+    "body": [
+      "{{< figure src=\"${1:src}\" alt=\"${2:alt}\" >}}",
+    ],
+    "description": "Insert a figure with src and alt attributes"
+  },
+  "linkcard": {
+    "scope": "markdown",
+    "prefix": "link",
+    "body": [
+      "{{< linkcard \"${1:link}\" >}}",
+    ],
+    "description": "Insert a link with text and URL",
+  },
+  "intenallinkcard": {
+    "scope": "markdown",
+    "prefix": "internallink",
+    "body": [
+      "{{< internallinkcard \"${1:link}\" >}}",
+    ],
+    "description": "Insert a link with text and URL",
+  },
+}
