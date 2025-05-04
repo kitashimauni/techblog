@@ -40,7 +40,7 @@ a, button, input, textarea, label, img {
   outline: none;
 }
 
-p code {
+p code, li code {
   background-color: #f5f5f5;
   color: #c7254e;
   font-family: Consolas, Monaco, "Courier New", monospace;
