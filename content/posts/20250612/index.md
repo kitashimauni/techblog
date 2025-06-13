@@ -253,10 +253,10 @@ docker run --gpus all -d --name {任意のコンテナ名} {イメージ名}
 ```
 {{< /details >}}
 
-Jupyter Labを入れた場合、下記コマンドをホストから実行することでブラウザからアクセスのための情報を得られます。
+Jupyter Labを入れた場合、下記コマンドをホストから実行することでブラウザからアクセスするための情報を得られます。
 
 ```bash
-docker exec -u {コンテナ内に作成したユーザー名} {コンテナ名} jupyter server list
+docker exec -u {ビルド時に作成したユーザー名} {コンテナ名} jupyter server list
 ```
 
 以下のような結果が得られます。
@@ -308,6 +308,8 @@ cd {プロジェクト名} # 移動
 `uv`では`pyproject.toml`を用いてプロジェクトを管理します。
 
 `pyproject.toml`を開いて以下のように追記します。
+
+CUDAのバージョンを`cu126`と書かれた部分を書き換えてください。例えば、CUDA11.8であれば`cu118`です。
 
 ```toml
 [project]
