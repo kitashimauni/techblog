@@ -73,7 +73,7 @@ RUN apt-get update && apt-get install -y \
     libcusparselt-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# sudo権限を持つユーザーを作成（echoをダブルクォートに修正）
+# sudo権限を持つユーザーを作成
 RUN groupadd -g $GID $USERNAME &&\
 useradd -m -u $UID -g $GID -s /bin/bash -G sudo $USERNAME && \
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -127,7 +127,7 @@ RUN apt-get update && apt-get install -y \
     libcusparselt-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# sudo権限を持つユーザーを作成（echoをダブルクォートに修正）
+# sudo権限を持つユーザーを作成
 RUN groupadd -g $GID $USERNAME &&\
 useradd -m -u $UID -g $GID -s /bin/bash -G sudo $USERNAME && \
 echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
