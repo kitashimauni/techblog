@@ -174,11 +174,9 @@ https://hub.docker.com/r/nvidia/cuda/tags
 
 また、`PyTorch`が対応しているCUDAのバージョンを選ぶことも重要です。
 
-`PyTorch`公式ページにCUDAのバージョンと`PyTorch`のバージョンの対応が書かれているので、使いたい`PyTorch`のバージョンが決まっている場合などはこれを参考にしてください。
+`PyTorch`公式の下記ページにCUDAのバージョンと`PyTorch`のバージョンの対応が書かれているので、使いたい`PyTorch`のバージョンが決まっている場合などはこれを参考にしてください。
 
 https://pytorch.org/get-started/previous-versions/
-
-![PyTorchの公式ページ](src/pytorch.png)
 
 選んだら、ベースイメージを指定している部分を以下のように書き換えます。
 ```docker
@@ -309,7 +307,7 @@ cd {プロジェクト名} # 移動
 
 `pyproject.toml`を開いて以下のように追記します。
 
-CUDAのバージョンを`cu126`と書かれた部分を書き換えてください。例えば、CUDA11.8であれば`cu118`です。
+CUDAのバージョンに合わせて`cu126`と書かれた部分を書き換えてください。例えば、CUDA11.8であれば`cu118`です。
 
 ```toml
 [project]
