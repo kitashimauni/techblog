@@ -186,7 +186,7 @@ https://pytorch.org/get-started/previous-versions/
 FROM nvidia/cuda:{選択したタグ}
 ```
 
-あるかわかりませんが、ここで`apt`を使えないOSを選んだ場合は今後`apt`が出てきた際にうまく書き換えてください。
+あるかわかりませんが、ここで`apt`を使えないOSを選んだ場合は`apt install`などをうまく書き換えてください。
 {{< /details >}}
 
 ## 引数の定義
