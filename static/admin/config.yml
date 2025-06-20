@@ -10,10 +10,11 @@ collections:
   - name: "techblog"
     label: "techblog"
     folder: "content/posts"
-    media_folder: "src"
+    media_folder: "/src"
+    public_folder: "/src"
     create: true
     identifier_field: "slug"
-    slug: "{{year}}{{month}}{{day}}-{{url_title}}/index"
+    path: "{{year}}{{month}}{{day}}-{{url_title}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "url_title", name: "url_title", widget: "string"}
