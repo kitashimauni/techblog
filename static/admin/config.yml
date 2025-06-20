@@ -1,0 +1,21 @@
+backend:
+  name: github
+  repo: kitashimauni/techblog
+  branch: main
+  base_url: https://techblog-cms-auth.kitashima-daiki123.workers.dev/
+publish_mode: editorial_workflow
+media_folder: "content/posts/{{slug}}/src"
+public_folder: "/posts/{{slug}}/src"
+collections:
+  - name: "techblog"
+    label: "techblog"
+    folder: "content/posts"
+    create: true
+    path: "{{slug}}/index.md"
+    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    fields:
+      - {label: "title", name: "title", widget: "string"}
+      - {label: "date", name: "date", widget: "datetime"}
+      - {label: "draft", name: "draft", widget: "boolean", default: true}
+      - {label: "tags", name: "tags", widget: "list", required: false}
+      - {label: "body", name: "body", widget: "markdown"}
