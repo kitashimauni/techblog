@@ -14,7 +14,7 @@ collections:
     public_folder: "/src"
     create: true
     identifier_field: "slug"
-    slug: "{{year}}{{month}}{{day}}-{{url_title}}/index"
+    slug: "/{{year}}{{month}}{{day}}-{{url_title}}/index"
     format: "toml-frontmatter"
     fields:
       - {label: "title", name: "title", widget: "string"}
@@ -31,7 +31,7 @@ collections:
     public_folder: "/src"
     create: true
     identifier_field: "slug"
-    slug: "{{year}}{{month}}{{day}}/index"
+    slug: "/{{year}}{{month}}{{day}}/index"
     format: "toml-frontmatter"
     fields:
       - {label: "title", name: "title", widget: "string"}
