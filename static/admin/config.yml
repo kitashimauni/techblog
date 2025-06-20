@@ -1,26 +1,20 @@
-# backend: CMSがどのリポジトリと通信するかを設定
 backend:
   name: github
-  repo: your-github-username/your-repo-name # 1. あなたのGitHubリポジトリ名
-  branch: main # 記事を保存するブランチ名
-  base_url: https://auth.your-domain.com # 2. 自宅サーバーのドメイン
-  auth_endpoint: login # 認証サーバーのエンドポイント
-
-# media_folder: CMSからアップロードした画像などが保存される場所
-media_folder: "static/images/uploads"
-public_folder: "/images/uploads"
-
-# collections: 記事など、管理したいコンテンツの種類を設定
+  repo: kitashimauni/techblog
+  branch: main
+publish_mode: editorial_workflow
+media_folder: "content/posts/{{slug}}/src"
+public_folder: "/posts/{{slug}}/src"
 collections:
-  - name: "blog" # 記事コレクション
-    label: "ブログ記事"
-    folder: "content/posts" # Markdownファイルが保存されているフォルダ
+  - name: "techblog"
+    label: "techblog"
+    folder: "content/posts"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # ファイル名の形式
-    fields: # 編集画面の入力項目
-      - {label: "タイトル", name: "title", widget: "string"}
-      - {label: "公開日", name: "date", widget: "datetime"}
-      - {label: "下書き", name: "draft", widget: "boolean", default: true}
-      - {label: "タグ", name: "tags", widget: "list", required: false}
-      - {label: "本文", name: "body", widget: "markdown"}
-      
+    path: "{{slug}}/index.md"
+    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    fields:
+      - {label: "title", name: "title", widget: "string"}
+      - {label: "date", name: "date", widget: "datetime"}
+      - {label: "draft", name: "draft", widget: "boolean", default: true}
+      - {label: "tags", name: "tags", widget: "list", required: false}
+      - {label: "body", name: "body", widget: "markdown"}
