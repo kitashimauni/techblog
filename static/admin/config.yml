@@ -23,6 +23,10 @@ collections:
       - {label: "draft", name: "draft", widget: "boolean", default: true}
       - {label: "tags", name: "tags", widget: "list", required: false}
       - {label: "body", name: "body", widget: "markdown"}
+    view_filters:
+      - label: "newpost"
+        field: "url_title"
+        pattern: ".*"
   - name: "oldposts"
     label: "oldposts"
     folder: "content/posts"
