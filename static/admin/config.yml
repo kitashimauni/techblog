@@ -31,6 +31,7 @@ collections:
     create: true
     path: "{{year}}{{month}}{{day}}/index"
     format: "toml-frontmatter"
+    filter: {field: "url_title", value: ""}
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "date", name: "date", widget: "datetime"}
@@ -38,3 +39,7 @@ collections:
       - {label: "draft", name: "draft", widget: "boolean", default: true}
       - {label: "tags", name: "tags", widget: "list", required: false}
       - {label: "body", name: "body", widget: "markdown"}
+view_filters:
+  - label: "Drafts"
+    field: "draft"
+    pattern: true
