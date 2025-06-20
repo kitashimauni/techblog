@@ -2,6 +2,7 @@ backend:
   name: github
   repo: kitashimauni/techblog
   branch: main
+  base_url: https://techblog-cms-auth.kitashima-daiki123.workers.dev/
 publish_mode: editorial_workflow
 media_folder: "content/posts/{{slug}}/src"
 public_folder: "/posts/{{slug}}/src"
