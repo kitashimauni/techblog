@@ -10,7 +10,7 @@ collections:
   - name: "techblog"
     label: "techblog"
     folder: "content/posts"
-    media_folder: "/src"
+    media_folder: "/{{year}}{{month}}{{day}}-{{url_title}}/src"
     public_folder: "/src"
     create: true
     identifier_field: "slug"
