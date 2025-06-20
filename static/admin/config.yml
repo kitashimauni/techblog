@@ -3,7 +3,7 @@ backend:
   repo: kitashimauni/techblog
   branch: main
   base_url: https://techblog-cms-auth.kitashima-daiki123.workers.dev/
-publish_mode: editorial_workflow
+# publish_mode: editorial_workflow
 media_folder: "/assets"
 public_folder: "/assets"
 collections:
@@ -14,7 +14,7 @@ collections:
     public_folder: "/src"
     create: true
     identifier_field: "slug"
-    path: "{{year}}{{month}}{{day}}-{{url_title}}/index"
+    src: "{{year}}{{month}}{{day}}-{{url_title}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "url_title", name: "url_title", widget: "string"}
