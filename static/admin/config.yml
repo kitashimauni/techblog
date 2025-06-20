@@ -14,7 +14,7 @@ collections:
     public_folder: "/src"
     create: true
     identifier_field: "slug"
-    src: "{{year}}{{month}}{{day}}-{{url_title}}/index"
+    slug: "{{year}}{{month}}{{day}}-{{url_title}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "url_title", name: "url_title", widget: "string"}
