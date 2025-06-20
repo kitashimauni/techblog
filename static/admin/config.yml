@@ -11,7 +11,7 @@ collections:
     label: "techblog"
     folder: "content/posts"
     create: true
-    path: "{{slug}}/index.md"
+    identifier_field: "slug"
     slug: "{{year}}{{month}}{{day}}-{{slug}}"
     fields:
       - {label: "title", name: "title", widget: "string"}
