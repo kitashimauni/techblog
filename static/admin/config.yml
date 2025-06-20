@@ -31,7 +31,7 @@ collections:
     create: true
     path: "{{year}}{{month}}{{day}}/index"
     format: "toml-frontmatter"
-    filter: {field: "url_title", value: ""}
+    filter: {field: "url_title", value: null}
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "date", name: "date", widget: "datetime"}
