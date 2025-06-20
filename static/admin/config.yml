@@ -4,15 +4,16 @@ backend:
   branch: main
   base_url: https://techblog-cms-auth.kitashima-daiki123.workers.dev/
 publish_mode: editorial_workflow
-media_folder: "content/posts/{{slug}}/src"
-public_folder: "/posts/{{slug}}/src"
+media_folder: "/assets"
+public_folder: "/assets"
 collections:
   - name: "techblog"
     label: "techblog"
     folder: "content/posts"
+    media_folder: "src"
     create: true
     identifier_field: "slug"
-    slug: "{{year}}{{month}}{{day}}-{{slug}}"
+    slug: "{{year}}{{month}}{{day}}-{{slug}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "date", name: "date", widget: "datetime"}
