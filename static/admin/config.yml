@@ -13,9 +13,10 @@ collections:
     media_folder: "src"
     create: true
     identifier_field: "slug"
-    slug: "{{year}}{{month}}{{day}}-{{slug}}/index"
+    slug: "{{year}}{{month}}{{day}}-{{url_title}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
+      - {label: "url_title", name: "url_title", widget: "string"}
       - {label: "date", name: "date", widget: "datetime"}
       - {label: "draft", name: "draft", widget: "boolean", default: true}
       - {label: "tags", name: "tags", widget: "list", required: false}
