@@ -13,6 +13,7 @@ collections:
     media_folder: "/{{year}}{{month}}{{day}}-{{url_title}}/src"
     public_folder: "/src"
     create: true
+    format: "toml-frontmatter"
     path: "{{year}}{{month}}{{day}}-{{url_title}}/index"
     fields:
       - {label: "title", name: "title", widget: "string"}
@@ -32,6 +33,7 @@ collections:
     media_folder: "/{{year}}{{month}}{{day}}/src"
     public_folder: "/src"
     create: true
+    format: "toml-frontmatter"
     path: "{{year}}{{month}}{{day}}/index"
     filter: {field: "url_title", value: null}
     fields:
