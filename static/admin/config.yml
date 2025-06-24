@@ -14,7 +14,6 @@ collections:
     public_folder: "/src"
     create: true
     path: "{{year}}{{month}}{{day}}-{{url_title}}/index"
-    format: "toml-frontmatter"
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "url_title", name: "url_title", widget: "string"}
@@ -34,7 +33,6 @@ collections:
     public_folder: "/src"
     create: true
     path: "{{year}}{{month}}{{day}}/index"
-    format: "toml-frontmatter"
     filter: {field: "url_title", value: null}
     fields:
       - {label: "title", name: "title", widget: "string"}
