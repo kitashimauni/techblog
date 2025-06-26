@@ -3,7 +3,7 @@ title = 'stable-diffusion-webuiを動かしてみる'
 date = '2025-03-02T14:13:09+09:00'
 draft = false
 summary = 'stable-diffusion-webuiを簡単に動かします'
-tags = ['生成AI']
+tags = [ '生成AI' ]
 +++
 
 stable-diffusion-webuiを動かしてみます。

@@ -3,7 +3,7 @@ title = 'Extenject講習'
 date = '2025-03-30T19:09:48+09:00'
 draft = false
 summary = 'Extenject講習会を実施しました'
-tags = ['Unity']
+tags = [ 'Unity' ]
 +++
 
 所属しているサークルでExtenject講習会をやりました。

@@ -4,7 +4,7 @@ date = '2025-04-06T22:46:47+09:00'
 lastmod = '2025-04-15T22:46:47+09:00'
 draft = false
 summary = 'ブログ制作記 第9回'
-tags = ['Hugo', 'Web']
+tags = [ 'Hugo', 'Web' ]
 +++
 
 ## ハンバーガーメニュー周りの改善

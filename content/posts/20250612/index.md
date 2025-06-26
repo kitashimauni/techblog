@@ -3,7 +3,7 @@ title = '(docker上で)uvを使ってPyTorchの環境構築'
 date = '2025-06-12T22:38:12+09:00'
 draft = false
 summary = 'docker上でuvを使ってPyTorchの環境構築をします。(需要があるかわかりませんが)Jupyter Labも入れられます。'
-tags = ['Docker', 'UV', 'PyTorch', 'CUDA']
+tags = [ 'Docker', 'UV', 'PyTorch', 'CUDA' ]
 +++
 
 皆さんはPythonの環境構築に`uv`は使っていますか？

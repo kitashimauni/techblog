@@ -4,7 +4,7 @@ date = '2025-02-18T22:41:47+09:00'
 lastmod = '2025-02-22T22:41:47+09:00'
 draft = false
 summary = 'ブログ制作記 第5回'
-tags = ['Hugo', 'Web']
+tags = [ 'Hugo', 'Web' ]
 +++
 
 気になった部分の修正をしていきます。

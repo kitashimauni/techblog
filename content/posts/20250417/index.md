@@ -3,7 +3,7 @@ title = 'Agent Development Kitを触ってみる #1'
 date = '2025-04-17T11:08:46+09:00'
 draft = false
 summary = '今話題のADKに触れてみます'
-tags = ['ADK', 'マルチエージェントシステム']
+tags = [ 'ADK', 'マルチエージェントシステム' ]
 +++
 
 つい最近公開されたAgent Development Kitを試してみようと思います。

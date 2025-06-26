@@ -3,7 +3,7 @@ title = 'ブログ制作記 #2'
 date = '2025-02-05T21:00:16+09:00'
 draft = false
 summary = 'ブログ制作記 第2回'
-tags = ['Hugo', 'Web']
+tags = [ 'Hugo', 'Web' ]
 +++
 
 引き続きブログの改善に臨みます。
@@ -55,7 +55,7 @@ html, body {
 ## タグを上にもってくる
 現状ではこんな感じで下に記事のタグが置かれていますが、上にあったほうがいいと思ったので上にもっていきます。
 
-{{< figure src="./20250205.png" alt="現状のタグの表示">}}
+{{< figure src="./src/20250205.png" alt="現状のタグの表示">}}
 
 `layouts/_default/single.html`をこんな感じにして`layouts/partials/terms.html`がコンテンツの上に置かれるようにします。
 

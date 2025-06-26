@@ -3,7 +3,7 @@ title = 'Agent Development Kitを触ってみる #3'
 date = '2025-04-28T16:25:02+09:00'
 draft = false
 summary = 'before_model_callbackなどを実装します'
-tags = ['ADK', 'マルチエージェントシステム']
+tags = [ 'ADK', 'マルチエージェントシステム' ]
 +++
 今回はADKのチュートリアルの5章以降をやっていきます。
 

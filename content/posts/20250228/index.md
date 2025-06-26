@@ -4,7 +4,7 @@ date = '2025-02-28T21:18:19+09:00'
 lastmod = '2025-03-18T17:18:19+09:00'
 draft = false
 summary = 'Unityでプロジェクトを作成する際の手順'
-tags = ['Unity']
+tags = [ 'Unity' ]
 +++
 
 Unityのプログラムを作る手順について、備忘録的に書きます。

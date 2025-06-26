@@ -3,7 +3,7 @@ title = 'ブログ制作記 #3'
 date = '2025-02-06T14:15:28+09:00'
 draft = false
 summary = 'ブログ制作記 第3回'
-tags = ['Hugo', 'Web']
+tags = [ 'Hugo', 'Web' ]
 +++
 
 今回も細かいところを修正していきます。

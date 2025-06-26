@@ -4,7 +4,7 @@ date = '2025-02-15T00:29:15+09:00'
 lastmod = '2025-04-27T00:29:15+09:00'
 draft = false
 summary = 'WSLにArchLinuxを入れる記事'
-tags = ['WSL', 'Arch']
+tags = [ 'WSL', 'Arch' ]
 +++
 
 ArchLinuxをWSLに入れてみようと思います。
