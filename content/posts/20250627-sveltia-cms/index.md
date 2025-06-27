@@ -1,6 +1,7 @@
 +++
 title = "Sveltia CMSを使おう"
 url_title = "sveltia-cms"
+summary = ""
 date = 2025-06-27T13:29:00.000
 lastmod = 2025-06-27T13:29:00.000
 draft = true
@@ -30,7 +31,7 @@ Sveltia CMSに関する情報はGitHubリポジトリ以外にはほとんどな
 
 Sveltia CMSを使う際の注意点として、Decap CMSで使える機能が使えないことがあるという点があります。
 
-例えば、Sveltia CMSではEditorial Workflowsが使えません。
+例えば、Sveltia CMSではEditorial Workflowsが使えません。これはmainブランチに直接pushするのではなく、ブランチを切ってpushしたうえで承認されたらmainブランチにマージするような機能でDecap CMSでは使うことができます。
 
 今後実装されることに期待です。
 
@@ -58,12 +59,11 @@ Sveltia CMSの導入に必要なステップを以下に記していきます。
 
 ### CMSのページを置く
 
-HUGOの\`static/admin\`以下に次のファイルを配置します。
+HUGOの`static/admin/`以下に次のファイルを配置します。
 
 まずはhtmlです。ここにアクセスすることで、記事の編集ができるようになります。
 
-```html
-{name="static/admin/index.html"}
+```html {name="static/admin/index.html"}
 <!DOCTYPE html>
 <html>
   <head>
@@ -82,7 +82,7 @@ HUGOの\`static/admin\`以下に次のファイルを配置します。
 
 また、設定ファイルも同じ階層に置きます。
 
-```yaml
+```yaml {name="static/admin/index.html"}
 backend:
   name: github
   repo: kitashimauni/techblog
