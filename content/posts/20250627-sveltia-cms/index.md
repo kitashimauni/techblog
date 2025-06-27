@@ -35,7 +35,10 @@ Sveltia CMSを使う際の注意点として、Decap CMSで使える機能が使
 今後実装されることに期待です。
 
 ## 前準備
+
 これまで、以下のような命名規則で記事を作ってきました。
+
+{{< figure src="/src/" >}}
 
 ## Sveltia CMSの導入
 
@@ -47,7 +50,8 @@ HUGOの\`static/admin\`以下に次のファイルを配置します。
 
 まずはhtmlです。ここにアクセスすることで、記事の編集ができるようになります。
 
-```html {name="static/admin/index.html"}
+```html
+{name="static/admin/index.html"}
 <!DOCTYPE html>
 <html>
   <head>
@@ -66,7 +70,7 @@ HUGOの\`static/admin\`以下に次のファイルを配置します。
 
 また、設定ファイルも同じ階層に置きます。
 
-```yml
+```yaml
 backend:
   name: github
   repo: kitashimauni/techblog
