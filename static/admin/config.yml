@@ -19,31 +19,12 @@ collections:
     fields:
       - {label: "title", name: "title", widget: "string"}
       - {label: "url_title", name: "url_title", widget: "string"}
+      - {label: "summary", name: "summary", widget: "string", required: false}
       - {label: "date", name: "date", widget: "datetime"}
       - {label: "lastmod", name: "lastmod", widget: "datetime"}
       - {label: "draft", name: "draft", widget: "boolean", default: true}
       - {label: "tags", name: "tags", widget: "list", required: false}
-      - {label: "body", name: "body", widget: "markdown"}
-    view_filters:
-      - label: "newpost"
-        field: "url_title"
-        pattern: ".*"
-  - name: "oldposts"
-    label: "oldposts"
-    folder: "content/posts"
-    media_folder: "/{{year}}{{month}}{{day}}/src"
-    public_folder: "/src"
-    create: true
-    format: "toml-frontmatter"
-    extension: "md"
-    path: "{{year}}{{month}}{{day}}/index"
-    filter: {field: "url_title", value: null}
-    fields:
-      - {label: "title", name: "title", widget: "string"}
-      - {label: "date", name: "date", widget: "datetime"}
-      - {label: "lastmod", name: "lastmod", widget: "datetime"}
-      - {label: "draft", name: "draft", widget: "boolean", default: true}
-      - {label: "tags", name: "tags", widget: "list", required: false}
+      - {label: "aliases", name: "aliases", widget: "list", required: false}
       - {label: "body", name: "body", widget: "markdown"}
 view_filters:
   - label: "Drafts"
