@@ -33,7 +33,33 @@
 {{- end }}
 <!-- <meta name="twitter:site" content="@Twitterアカウント"> --> <!-- のちほど追加するかも -->
 
+<!-- Pagefind Search Integration -->
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({
+            element: "#search",
+	    showImages: false,
+	    translations: {
+                clear_search: "消去",
+                zero_results: "[SEARCH_TERM]の検索結果はありません",
+                alt_search: "[SEARCH_TERM]の検索結果はありませんでした。[DIFFERENT_TERM]の検索結果を表示しています",
+                search_suggestion: "[SEARCH_TERM]の検索結果はありませんでした。次のいずれかの検索を試してください",
+            }
+        });
+    });
+</script>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JCSGSZWLES"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JCSGSZWLES');
+</script>
 
 <title>{{ $title }}</title>
 {{ partialCached "head/css.html" . }}
