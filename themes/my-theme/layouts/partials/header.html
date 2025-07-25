@@ -1,7 +1,9 @@
 {{ with resources.Get (.Site.Param "titleImagePath") }}
-  <a href={{ site.Home.Permalink }}>
-    <img class="title-image" src="{{ .RelPermalink }}" alt="Title Image">
-  </a>
+  {{- with .Resize (printf "%dx%d webp" .Width .Height) -}}
+    <a href={{ site.Home.Permalink }}>
+      <img class="title-image" src="{{ .RelPermalink }}" alt="Title Image">
+    </a>
+  {{- end -}}
 {{ else }}
   <h1 class="site-title">
     <a href={{ site.Home.Permalink }}>{{ site.Title }}</a>
