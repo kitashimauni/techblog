@@ -3,7 +3,7 @@ backend:
   repo: kitashimauni/techblog
   branch: main
   base_url: https://techblog-cms-auth.kitashima-daiki123.workers.dev/
-# publish_mode: editorial_workflow
+logo_url: "https://tech.n-island.dev/favicon.ico"
 media_folder: "/assets"
 public_folder: "/assets"
 collections:
