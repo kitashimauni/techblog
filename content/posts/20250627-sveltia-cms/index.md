@@ -1,7 +1,7 @@
 +++
 title = "Sveltia CMSを使おう"
 url_title = "sveltia-cms"
-summary = ""
+summary = "Hugoで"
 date = 2025-06-27T13:29:00.000
 lastmod = 2025-06-27T13:29:00.000
 draft = true
