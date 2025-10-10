@@ -3,7 +3,7 @@ title = '古のブログを作ろう 企画編'
 date = '2025-09-16T20:57:19+09:00'
 draft = false
 summary = '古のブログサイトを作りたい'
-tags = [ "Web" ]
+tags = [ "Web", "Eleventy" ]
 +++
 
 忙しくて全く更新できていませんが、最低でも月1回の投稿を目指します。
@@ -55,7 +55,7 @@ npx @11ty/eleventy --serve
 
 以下のように表示されました。マークダウンが問題なく変換されているようです。
 
-{{< figure src="src/first.png " alt="Headingが表示されている" >}}
+{{< figure src="src/first.png" alt="Headingが表示されている" >}}
 
 かなりシンプルで、求めているものが簡単に作れそうです。
 
