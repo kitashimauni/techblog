@@ -1,6 +1,7 @@
 +++
 title = 'LinuxでSelf-Hosted Runner'
 date = '2025-10-08T23:10:47+09:00'
+lastMod = '2025-11-11T23:10:47+09:00'
 draft = false
 summary = 'Proxmox上でSelf-Hosted Runnerを立てます'
 tags = [ "Proxmox", "GitHub", "CI/CD" ]
@@ -39,14 +40,14 @@ dockerをインストールします。
 以下のコマンドを実行します。
 
 ```bash
-sudo apt update
-sudo apt install ca-certificates curl gnupg lsb-release
+sudo apt update -y
+sudo apt install ca-certificates curl gnupg lsb-release -y
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io
+sudo apt update -y
+sudo apt install docker-ce docker-ce-cli containerd.io -y
 ```
 
 以下のコマンドを実行して `docker` グループに追加します。
@@ -137,6 +138,7 @@ Self-Hosted Runnerの一覧から削除したいRunnerの右側にある3点リ�
 そこに表示されている、以下のようなコマンドを打つことで削除できます。
 
 ```bash
+sudo ./svc.sh uninstall
 ./config.sh remove --token {トークン}
 ```
 
