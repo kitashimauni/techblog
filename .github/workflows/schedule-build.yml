@@ -1,0 +1,16 @@
+name: Scheduled Build
+
+on:
+  schedule:
+    # 毎日 日本時間 0:00 (UTC 15:00) に実行
+    - cron: '0 15 * * *'
+  # 手動でも実行できるようにする設定（テスト用）
+  workflow_dispatch:
+
+jobs:
+  build-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages Build
+        run: |
+          curl -X POST "${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}"
