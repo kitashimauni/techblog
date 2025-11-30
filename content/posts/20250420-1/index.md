@@ -18,6 +18,9 @@ aliases = [ "/posts/20250420" ]
 
 `assets/images`に「NO IMAGE」の画像を配置したうえで、`linkcard`のshortcodeを以下のように書き換えます。
 
+> [!CAUTION]
+> 最新の完全版は[第7回](https://tech.n-island.dev/posts/20250302-3/)の記事を参照してください。
+
 ```html {name="layouts/shortcodes/linkcard.html (画像取得部分)"}
 <!-- get image -->
 {{ with resources.Get "images/noimage.png" }}
