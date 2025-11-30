@@ -37,8 +37,13 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
 作成したコードは以下です。
 正規表現を用いて特定のタグの値を抜き出しています。
 
-```html {name="layouts/shortcodes/linkcard.html"}
-{{- $url := urls.Parse (.Get 0) }}
+(1度 `partial` で実装してから `shortcode` で呼び出すようにしました。)
+
+> [!TIP]
+> 追記(2025-12-01): 画像URLがHTMLエスケープされる場合があるため、`htmlUnescape`関数を使うように修正しました。
+
+```html {name="layouts/partials/linkcard.html"}
+{{- $url := urls.Parse .url }}
 {{- $title := "" }}
 {{- $description := "" }}
 {{- $image := "" }}
@@ -75,19 +80,12 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
     {{- end }}
 
     <!-- get image -->
+    {{ with resources.Get "images/noimage.png" }}
+      {{- $image = .RelPermalink }}
+    {{ end }}
     {{- $found := findRESubmatch `og:image["\'].*?content=["\'](.*?)["\']` $content 1 }}
     {{- range $found }}
-      {{- $image = index . 1 }}
-    {{- end }}
-    {{- if eq $image "" }}
-      {{- $found := findRESubmatch `<img.*?src=["\'](.*?)["\']` $content 1 }}
-      {{- range $found }}
-        {{- $image = index . 1 }}
-      {{- end }}
-      {{- if eq (slicestr $image 0 1) "/" }}
-        {{- $host := urls.JoinPath "https://" $url.Hostname }}
-        {{- $image =  urls.JoinPath $host $image }}
-      {{- end }}
+      {{- $image = index . 1 | htmlUnescape }}
     {{- end }}
 
     <!-- get siteURL -->
@@ -112,6 +110,12 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
     </div>
   {{ end }}
 </a>
+```
+
+`shortcode` 本体は以下のように作成します。
+
+```html {name="layouts/shortcodes/linkcard.html"}
+{{ partial "linkcard.html" (dict "url" .Get 0) }}
 ```
 
 このshortcodeを使ってmdで以下のように書くことでリンクカードを埋め込むことができます。

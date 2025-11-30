@@ -6,6 +6,10 @@ summary = '自宅サーバーが壊れました'
 tags = ['Proxmox', 'Linux', 'サーバー']
 +++
 
+この記事は農工大アドベントカレンダー2025の9日目の記事です。
+
+{{< linkcard "https://qiita.com/advent-calendar/2025/tuat" >}}
+
 **自宅サーバーが壊れました**
 
 故障したサーバーの構成は以下のとおりです。

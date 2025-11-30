@@ -40,7 +40,7 @@
     {{ end }}
     {{- $found := findRESubmatch `og:image["\'].*?content=["\'](.*?)["\']` $content 1 }}
     {{- range $found }}
-      {{- $image = index . 1 }}
+      {{- $image = index . 1 | htmlUnescape }}
     {{- end }}
 
     <!-- get siteURL -->
