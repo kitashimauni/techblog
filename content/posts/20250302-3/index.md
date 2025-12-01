@@ -1,7 +1,7 @@
 +++
 title = 'ブログ制作記 #7'
 date = '2025-03-02T20:17:29+09:00'
-lastmod = '2025-03-07T20:17:29+09:00'
+lastmod = '2025-12-01T20:17:29+09:00'
 draft = false
 summary = 'ブログ制作記 第7回'
 tags = [ "Web", "Hugo" ]
@@ -111,6 +111,92 @@ OGPが設定されたサイトであれば、タイトル・サイト画像・�
   {{ end }}
 </a>
 ```
+
+{{< details summary="CSS" >}}
+CSSは以下のように定義しました。
+
+```css
+/* リンクカードの表示 */
+.link-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  overflow: hidden;
+  height: 110px;
+  margin: 16px 0;
+  background: #fff; /* 背景色を明示（念のため） */
+}
+
+/* 画像を囲むdivの方にも設定を追加（重要） */
+.link-card__image {
+  flex-shrink: 0; /* 横幅が縮まないように固定 */
+  height: 100%;   /* 高さをカードいっぱいに */
+  margin: 0;      /* 余計なマージンを排除 */
+  padding: 0;     /* 余計なパディングを排除 */
+}
+
+.link-card__image img {
+  width: 100%;    /* 親divに合わせる */
+  height: 100%;   /* 親divに合わせる */
+  
+  /* 【修正点1】隙間なく埋める設定に変更 */
+  object-fit: cover; 
+  
+  /* 【修正点2】画像下の数ピクセルの隙間を消す */
+  vertical-align: bottom; 
+}
+
+.link-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  height: 100%;
+  
+  /* コンテンツが溢れた時の対策 */
+  min-width: 0; 
+}
+
+.link-card__content:hover {
+  background: #eee;
+}
+
+.link-card__title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.link-card__description {
+  font-size: 14px;
+  color: #555;
+  margin: 0 0 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.link-card__url {
+  font-size: 12px;
+  margin: 5px 0;
+  color: #555;
+}
+```
+
+{{< /details >}}
 
 `shortcode` 本体は以下のように作成します。
 

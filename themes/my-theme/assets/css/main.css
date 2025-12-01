@@ -503,13 +503,26 @@ html::-webkit-scrollbar-thumb {
   overflow: hidden;
   height: 110px;
   margin: 16px 0;
+  background: #fff; /* 背景色を明示（念のため） */
+}
+
+/* 画像を囲むdivの方にも設定を追加（重要） */
+.link-card__image {
+  flex-shrink: 0; /* 横幅が縮まないように固定 */
+  height: 100%;   /* 高さをカードいっぱいに */
+  margin: 0;      /* 余計なマージンを排除 */
+  padding: 0;     /* 余計なパディングを排除 */
 }
 
 .link-card__image img {
-  width: 220px;
-  height: 110px;
-  object-fit: contain;
-  overflow: hidden;
+  width: 100%;    /* 親divに合わせる */
+  height: 100%;   /* 親divに合わせる */
+  
+  /* 【修正点1】隙間なく埋める設定に変更 */
+  object-fit: cover; 
+  
+  /* 【修正点2】画像下の数ピクセルの隙間を消す */
+  vertical-align: bottom; 
 }
 
 .link-card__content {
@@ -519,6 +532,9 @@ html::-webkit-scrollbar-thumb {
   flex-grow: 1;
   justify-content: center;
   height: 100%;
+  
+  /* コンテンツが溢れた時の対策 */
+  min-width: 0; 
 }
 
 .link-card__content:hover {
