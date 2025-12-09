@@ -18,7 +18,7 @@
 
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ .Summary }}">
-{{- with resources.Get (.Site.Param "titleImagePath") }}
+{{- with resources.Get (.Site.Param "ogImagePath") }}
   <meta property="og:image" content="{{ .RelPermalink }}">
 {{- end }}
 <meta property="og:url" content="{{ urls.JoinPath site.Home.Permalink .RelPermalink }}">
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ .Summary }}">
-{{- with resources.Get (.Site.Param "titleImagePath") }}
+{{- with resources.Get (.Site.Param "ogImagePath") }}
   <meta name="twitter:image" content="{{ .RelPermalink }}">
 {{- end }}
 <!-- <meta name="twitter:site" content="@Twitterアカウント"> --> <!-- のちほど追加するかも -->
