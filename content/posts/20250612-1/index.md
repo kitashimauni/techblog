@@ -17,7 +17,7 @@ aliases = [ "/posts/20250612" ]
 
 この記事では、`docker`を使ってCUDAが使えるコンテナを用意し、`uv`で`PyTorch`が使える環境を作る手順を紹介します(ついでに`Jupyter Lab`も入れられます)。
 
-`docker`は使わないという場合は後半部分(「**uvでPyTorchを使えるようにする**」以降)を参照してください(CUDAを使える環境であることが前提条件となります)。
+`docker`は使わないけどCUDAの環境で`PyTorch`を使いたいという場合は、後半部分(「**uvでPyTorchを使えるようにする**」以降)を参照してください(CUDAを使える環境であることが前提条件となります)。
 
 {{< details summary="余談" >}}
 Jupyter LabでできることはほとんどVSCodeでできてしまうので、Jupyter Labの需要はあまりないかもしれません。
