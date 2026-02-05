@@ -47,9 +47,9 @@ ls -n /dev/dri/renderD128
 crw-rw---- 1 0 104 226, 128 Nov 27 22:02 /dev/dri/renderD128
 ```
 
-GIDが `104` になっています。
+GIDが `104` になっています。この値をメモしておきます。
 
-GIDをコンテナに渡せるように、以下のように設定を加えます。
+GIDをLXCに渡せるように、以下のように設定を加えます。
 
 ```txt {name="/etc/subgid"}
 root:104:1
