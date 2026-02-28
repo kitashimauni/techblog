@@ -15,11 +15,12 @@
   <meta name="author" content="{{ .AuthorName }}">  <!-- 作成者情報 -->
 {{- end }}
 <meta name="generator" content="Hugo">  <!-- 生成ツール -->
+<link rel="canonical" href="{{ .Permalink }}">
 
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ .Summary }}">
 {{- with resources.Get (.Site.Param "ogImagePath") }}
-  <meta property="og:image" content="{{ .RelPermalink }}">
+  <meta property="og:image" content="{{ .Permalink }}">
 {{- end }}
 <meta property="og:url" content="{{ urls.JoinPath site.Home.Permalink .RelPermalink }}">
 {{ if .IsPage }}
