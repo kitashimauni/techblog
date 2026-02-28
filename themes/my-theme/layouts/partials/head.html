@@ -22,7 +22,11 @@
   <meta property="og:image" content="{{ .RelPermalink }}">
 {{- end }}
 <meta property="og:url" content="{{ urls.JoinPath site.Home.Permalink .RelPermalink }}">
-<meta property="og:type" content="website">
+{{ if .IsPage }}
+  <meta property="og:type" content="article">
+{{ else }}
+  <meta property="og:type" content="website">
+{{ end }}
 <meta property="og:site_name" content="{{ site.Title }}">
 
 <meta name="twitter:card" content="summary">
