@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #2'
 date = '2025-02-05T21:00:16+09:00'
 draft = false
-summary = 'ブログ制作記 第2回'
+summary = 'HugoでAboutページの作成、ページ全体の中央寄せ、タグ表示の改善、コードブロックの横スクロール対応を実装します'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250205" ]
 +++

@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #3'
 date = '2025-02-06T14:15:28+09:00'
 draft = false
-summary = 'ブログ制作記 第3回'
+summary = 'CSSでスクロールバーの視認性向上、画像のレスポンシブ対応、フッターを画面下部に固定する方法'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250206" ]
 +++
