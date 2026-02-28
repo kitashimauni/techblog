@@ -2,7 +2,7 @@ baseURL = 'https://tech.n-island.dev/'
 languageCode = 'ja-jp'
 title = 'テック島開拓記'
 theme = 'my-theme'
-pagenate = 10
+paginate = 10
 enableRobotsTXT = true
 
 [params]
