@@ -2,7 +2,7 @@
 title = 'Extenject講習'
 date = '2025-03-30T19:09:48+09:00'
 draft = false
-summary = 'Extenject講習会を実施しました'
+summary = 'UnityにおけるDI(依存性注入)フレームワークExtenjectの講習会を実施しました'
 tags = [ "Unity" ]
 aliases = [ "/posts/20250330" ]
 +++

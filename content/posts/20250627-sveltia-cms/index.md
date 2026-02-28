@@ -1,7 +1,7 @@
 +++
 title = "Sveltia CMSを使おう"
 url_title = "sveltia-cms"
-summary = "Hugoで"
+summary = "HugoブログにSveltia CMSを導入してCloudflare上で完結するヘッドレスCMS環境を構築する方法"
 date = 2025-06-27T13:29:00.000
 lastmod = 2025-06-27T13:29:00.000
 draft = true

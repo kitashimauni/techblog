@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #10'
 date = '2025-04-20T00:27:08+09:00'
 draft = false
-summary = 'ブログ制作記 第10回'
+summary = 'HugoでGitHub風blockquoteアラートの導入、インラインcodeの装飾等をします'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250420" ]
 +++

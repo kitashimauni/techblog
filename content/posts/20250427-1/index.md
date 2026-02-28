@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #11'
 date = '2025-04-27T23:14:39+09:00'
 draft = false
-summary = 'ブログ制作記 第11回'
+summary = 'Hugoで関連記事の自動表示、HTML/CSS/JSのminify設定、画像のwebp自動変換、リンクやdetailsタグの装飾をします'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250427" ]
 +++

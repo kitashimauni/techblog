@@ -3,7 +3,7 @@ title = 'ブログ制作記 #9'
 date = '2025-04-06T22:46:47+09:00'
 lastmod = '2025-04-15T22:46:47+09:00'
 draft = false
-summary = 'ブログ制作記 第9回'
+summary = 'ハンバーガーメニューの改善、カスタム404ページの作成、robots.txtの設定をします'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250406" ]
 +++

@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #8'
 date = '2025-04-02T20:58:30+09:00'
 draft = false
-summary = 'ブログ制作記 第8回'
+summary = 'ハンバーガーメニューの実装、ブログタイトルの変更をします'
 tags = [ "Hugo", "Web" ]
 aliases = [ "/posts/20250402" ]
 +++

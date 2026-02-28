@@ -2,7 +2,7 @@
 title = 'ブログ制作記 #12'
 date = '2025-07-25T14:55:52+09:00'
 draft = false
-summary = 'ブログ制作記 第12回'
+summary = 'Pagefindを使ってHugoブログに日本語対応の全文検索機能を追加します'
 tags = [ "Hugo", "Web" ]
 +++
 
