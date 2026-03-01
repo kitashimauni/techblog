@@ -11,7 +11,7 @@
       {{ if ne .Lastmod .Date }}
         {{ $updateDate := .Lastmod | time.Format "2006/01/02" }}
         <br>
-        (最終更新:<time datetime="{{ $dateMachine }}">{{ $updateDate }}</time>)
+        (最終更新:<time datetime="{{ .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}">{{ $updateDate }}</time>)
       {{ end }}
       <br>
       {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
