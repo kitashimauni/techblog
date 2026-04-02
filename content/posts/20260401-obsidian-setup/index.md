@@ -1,7 +1,7 @@
 +++
 aliases = []
 date = 2026-04-01T15:35:48+09:00
-draft = true
+draft = false
 summary = 'DBをセルフホストしてObsidianのセットアップをします'
 tags = ['Obsidian', 'サーバー']
 title = 'self-hostedのDBでObsidianをセットアップする'
