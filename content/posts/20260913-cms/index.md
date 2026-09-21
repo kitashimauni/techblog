@@ -1,7 +1,7 @@
 +++
 aliases = []
 date = 2026-09-13T23:09:07+09:00
-draft = true
+draft = false
 summary = '運用しているブログ用にCMSを作りました。'
 tags = ['CMS', 'Hugo', 'Eleventy']
 title = 'CMSを刷新した'
