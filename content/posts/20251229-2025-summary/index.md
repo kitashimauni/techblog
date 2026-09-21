@@ -1,4 +1,5 @@
-+++aliases = []
++++
+aliases = []
 date = '2025-12-31T00:00:00+09:00'
 draft = false
 summary = '2025年を振り返ります'
